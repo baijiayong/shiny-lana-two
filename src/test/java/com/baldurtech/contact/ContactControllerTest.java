@@ -2,6 +2,8 @@ package com.baldurtech.contact;
 
 import org.junit.Test;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
@@ -14,6 +16,10 @@ import java.util.ArrayList;
 import com.baldurtech.config.WebAppConfigurationAware;
 
 public class ContactControllerTest extends WebAppConfigurationAware {
+
+    @InjectMocks
+    ContactController controller;
+    
     @Mock
     ContactService contactService;
     

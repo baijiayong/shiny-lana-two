@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ContactService {
-     public List<Contact> getContactList() {
+    public List<Contact> getContactList() {
+        return findAllContacts();
+    }
+    public List<Contact> findAllContacts() {
         List<Contact> contactList = new ArrayList<Contact>();
         Contact contact = new Contact();       
         contact.setName("shihang");
