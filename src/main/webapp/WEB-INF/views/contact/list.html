@@ -15,6 +15,7 @@
                 <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
             </th:block>
             <h1 align="center">Contact List</h1>
+            <p th:text="${contactList}"></p>
             <table border="1" align="center">
                 <tr>
                     <th>Name</th>
