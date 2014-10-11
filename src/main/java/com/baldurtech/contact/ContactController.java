@@ -15,6 +15,12 @@ public class ContactController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
+       
+        model.addAttribute("list", getList());
+        return "contact/list";
+    }
+    
+    public List<Contact> getList() {
         List<Contact> list = new ArrayList<Contact>();
         Contact contact = new Contact();       
         contact.setName("shihang");
@@ -31,7 +37,6 @@ public class ContactController {
         list.add(contact);
         list.add(contact2);
         
-        model.addAttribute("list", list);
-        return "contact/list";
+        return list;
     }
 }
