@@ -1,12 +1,15 @@
 package com.baldurtech.contact;
 
 import org.junit.Test;
+import org.junit.Before;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
+import org.springframework.ui.Model;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -18,11 +21,19 @@ import com.baldurtech.config.WebAppConfigurationAware;
 public class ContactControllerTest extends WebAppConfigurationAware {
 
     @InjectMocks
-    ContactController controller;
+    ContactController contactController;
     
     @Mock
     ContactService contactService;
     
+    @Mock
+    Model model;
+    
+    @Before 
+    public void initMocks() {
+        MockitoAnnotations.initMocks(this);
+    }
+
     public void setup() {
         
         List<Contact> contactList = new ArrayList<Contact>();
@@ -58,5 +69,11 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                                 containsString("<td>652994</td>")
                         ))
                 );
+    }
+    
+    @Test
+    public void contactServiceWillInvokedGetContactList() {
+        contactController.contactList(model);
+        verify(contactService).getContactList();
     }
 }
