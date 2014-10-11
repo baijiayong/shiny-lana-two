@@ -15,7 +15,6 @@
                 <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
             </th:block>
             <h1 align="center">Contact List</h1>
-            <h1 th:text="${list}"></h1>
             <table border="1" align="center">
                 <tr>
                     <th>Name</th>
@@ -23,18 +22,12 @@
                     <th>Vpmn</th>
                     <th>Address</th>
                 </tr>
-                <tr>
-                    <td>Shi Hang</td>
-                    <td>15222222222</td>
-                    <td>62222</td>
-                    <td>TaiYuan</td>
-                </tr>
-                <tr>
-                    <td>Xiao Bai</td>
-                    <td>15222222222</td>
-                    <td>62222</td>
-                    <td>TaiYuan</td>
-                </tr>          
+                <tr th:each="contact : ${list}">
+                    <td th:text="${contact.name}"></td>
+                    <td th:text="${contact.mobile}"></td>
+                    <td th:text="${contact.mobile}"></td>
+                    <td th:text="${contact.homeAddress}"></td>
+                </tr>         
             </table>       
         </div>
     </body>
