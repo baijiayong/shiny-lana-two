@@ -3,27 +3,25 @@ package com.baldurtech.contact;
 import java.util.List;
 import java.util.ArrayList;
 
+import javax.persistence.*;
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Repository
+@Transactional
 public class ContactRepository {
+    @PersistenceContext
+    EntityManager entityManager;
+    
     public List<Contact> findAll() {
-        List<Contact> list = new ArrayList<Contact>();
-        Contact contact = new Contact();       
-        contact.setName("shihang");
-        contact.setMobile("15235432994");
-        contact.setHomeAddress("shanxi");
-        contact.setVpmn("652994");
-        
-        Contact contact2 = new Contact();
-        contact2.setName("xiaobai");
-        contact2.setMobile("18235433333");
-        contact2.setHomeAddress("taiyuan");
-        contact2.setVpmn("655555");
-        
-        list.add(contact);
-        list.add(contact2);
-        
-        return list;
+        try {
+            return entityManager.createNamedQuery(Contact.FIND_ALL, Contact.class)
+                .getResultList();
+        } catch (PersistenceException e) {
+			return null;
+		}
     }
 }

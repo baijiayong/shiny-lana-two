@@ -1,8 +1,17 @@
 package com.baldurtech.contact;
 
-public class Contact
-{
-    private Long id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "contact")
+@NamedQuery(name = Contact.FIND_ALL, query = "from Contact")
+public class Contact implements java.io.Serializable {
+    public static final String FIND_ALL = "Contact.findAll";
+    
+    @Id
+	@GeneratedValue
+	private Long id;
+
     private String name;
     private String mobile;
     private String vpmn;
