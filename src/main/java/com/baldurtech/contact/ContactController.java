@@ -26,4 +26,9 @@ public class ContactController {
         model.addAttribute("list", contactService.getList());
         return "contact/list";
     }
+    
+    @RequestMapping(value = "/save", method = RequestMethod.GET)
+    public String save() {
+        return "contact/save";
+    }
 }
