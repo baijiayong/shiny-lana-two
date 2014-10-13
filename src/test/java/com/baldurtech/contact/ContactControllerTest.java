@@ -18,6 +18,7 @@ import static org.hamcrest.Matchers.containsString;
 import org.springframework.ui.Model;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 public class ContactControllerTest extends WebAppConfigurationAware {
 
@@ -35,39 +36,11 @@ public class ContactControllerTest extends WebAppConfigurationAware {
         MockitoAnnotations.initMocks(this);
     }
     
-    public void setup() {
-        List<Contact> list = new ArrayList<Contact>();
-        Contact contact = new Contact();       
-        contact.setName("shihang");
-        contact.setMobile("15235432994");
-        contact.setHomeAddress("shanxi");
-        contact.setVpmn("652994");
-         
-        Contact contact2 = new Contact();
-        contact2.setName("xiaobai");
-        contact2.setMobile("18235433333");
-        contact2.setHomeAddress("taiyuan");
-        contact2.setVpmn("655555");
-         
-        list.add(contact);
-        list.add(contact2);
-        
-        when(contactService.getList()).thenReturn(list);
-    }
-    
    @Test
     public void 当URI为contact_list时应该由ContactController处理() throws Exception {
         mockMvc.perform(get("/contact/list"))
                .andExpect(view().name("contact/list"))
-               .andExpect(model().attributeExists("list"))
-               .andExpect(content().string(
-                        allOf(
-                                containsString("<title>contactList</title>"),
-                                containsString("<td>shihang</td>"),
-                                containsString("<td>15235432994</td>"),
-                                containsString("<td>shanxi</td>"),
-                                containsString("<td>652994</td>")
-                        )));
+               .andExpect(model().attributeExists("list"));
 
     }
     
@@ -75,6 +48,13 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 在ContactController中调用ContactService中的getList方法() {
         contactController.list(model);
         verify(contactService).getList();
+    }
+    
+    @Test
+    public void 当URL为contact_save时应该访问save页面() throws Exception {
+        mockMvc.perform(get("/contact/save"))
+               .andExpect(view().name("contact/save"))
+               .andExpect(status().isOk());
     }
 
 }
