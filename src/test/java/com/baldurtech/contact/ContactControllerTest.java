@@ -56,5 +56,4 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                .andExpect(view().name("contact/save"))
                .andExpect(status().isOk());
     }
-
 }

@@ -1,8 +1,44 @@
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>save</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <h1>Save</h1>
+    <h1 align="center">Save</h1>
+    <table align="center">
+        <form action="list" method="POST">
+        <tr>
+            <td><label>Name:<input type="text" name="name" autofocus="autofocus "/></label></td>
+        </tr>
+        <tr>
+            <td><label>Mobile:<input type="text" name="mobile"/></label></td>
+        </tr>
+        <tr>
+            <td><label>Email:<input type="email" autocompile="on" name="email"/></label></td>
+        </tr>
+        <tr>
+            <td><label>VPMN:<input type="text" name="vpmn"/></label></td>
+        </tr>
+        <tr>
+            <td><label>HomeAddress:<input type="text" name="homeAddress"/></label></td>
+        </tr>
+        <tr>
+            <td><label>OfficeAddress:<input type="text" name="officeAddress"/></label></td>
+        </tr>
+        <tr>
+            <td><label>Job:<input type="text" name="job"/></label></td>
+        </tr>
+        <tr>
+            <td><label>JobLevel:<input type="number" name="jobLevel"/></label></td>
+        </tr>
+        <tr>
+            <td><label>Memo:<input type="text" name="memo"/></label></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="submit" name="action"/></td>
+        </tr>
+        </form>
+    </table>
 </body>
 </html>
