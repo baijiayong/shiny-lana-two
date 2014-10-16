@@ -24,4 +24,19 @@ public class ContactRepository {
 			return null;
 		}
     }
+    
+    public Contact getById(Long id) {
+        Contact contact = new Contact();
+        contact.setName("shihang");
+        contact.setMobile("18235100872");
+        contact.setEmail("1335932576@qq.com");
+        contact.setVpmn("652994");
+        contact.setOfficeAddress("beizhang");
+        contact.setHomeAddress("taiyuan");
+        contact.setMemo("memo");
+        contact.setJob("HR");
+        contact.setJobLevel(3L);
+        
+        return contact;
+    }
 }
