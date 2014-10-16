@@ -31,4 +31,9 @@ public class ContactController {
     public String save() {
         return "contact/save";
     }
+    
+    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    public String show() {
+        return "contact/show";
+    }
 }
