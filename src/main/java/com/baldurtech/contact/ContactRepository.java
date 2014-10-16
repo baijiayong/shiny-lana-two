@@ -26,17 +26,12 @@ public class ContactRepository {
     }
     
     public Contact getById(Long id) {
-        Contact contact = new Contact();
-        contact.setName("shihang");
-        contact.setMobile("18235100872");
-        contact.setEmail("1335932576@qq.com");
-        contact.setVpmn("652994");
-        contact.setOfficeAddress("beizhang");
-        contact.setHomeAddress("taiyuan");
-        contact.setMemo("memo");
-        contact.setJob("HR");
-        contact.setJobLevel(3L);
-        
-        return contact;
+		try {
+            return (Contact)entityManager.createNamedQuery(Contact.GET_BY_ID, Contact.class)
+                .setParameter("id", id)
+                .getSingleResult();
+        } catch (PersistenceException e) {
+			return null;
+		}
     }
 }

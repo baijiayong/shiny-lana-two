@@ -4,9 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "contact")
-@NamedQuery(name = Contact.FIND_ALL, query = "from Contact")
+@NamedQueries({
+@NamedQuery(name = Contact.FIND_ALL, query = "from Contact"),
+@NamedQuery(name = Contact.GET_BY_ID, query = "SELECT c FROM Contact c WHERE c.id = :id")
+})
 public class Contact implements java.io.Serializable {
     public static final String FIND_ALL = "Contact.findAll";
+    public static final String GET_BY_ID = "Contact.getById";
     
     @Id
 	@GeneratedValue

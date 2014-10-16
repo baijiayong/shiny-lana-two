@@ -1,6 +1,7 @@
 package com.baldurtech.contact;
 
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.Before;
 import static org.mockito.Mockito.verify;
 import org.mockito.InjectMocks;
@@ -49,19 +50,13 @@ public class ContactControllerTest extends WebAppConfigurationAware {
         contactController.list(model);
         verify(contactService).getList();
     }
-    
-    @Test
-    public void 当URL为contact_save时应该访问save页面() throws Exception {
-        mockMvc.perform(get("/contact/save"))
-               .andExpect(view().name("contact/save"))
-               .andExpect(status().isOk());
-    }
-    
+
+    @Ignore
     @Test
     public void 当URL为contact_show时应该访问show页面() throws Exception {
         mockMvc.perform(get("/contact/show").param("id",String.valueOf(CONTACT_ID)))
             .andExpect(view().name("contact/show"))
-            .andExpect(status().isOk())
+            .andExpect(status().isOk()) 
             .andExpect(model().attributeExists("contact"));
     }
     

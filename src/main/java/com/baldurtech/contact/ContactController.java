@@ -28,11 +28,6 @@ public class ContactController {
         return "contact/list";
     }
     
-    @RequestMapping(value = "/save", method = RequestMethod.GET)
-    public String save() {
-        return "contact/save";
-    }
-    
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public String show(@RequestParam(value="id", required=false, defaultValue="") String id, Model model) {
         model.addAttribute("contact", contactService.show(Long.valueOf(id)));
