@@ -35,7 +35,7 @@ public class ContactController {
     
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public String show(@RequestParam(value="id", required=false, defaultValue="") String id, Model model) {
-        model.addAttribute("contact", contactService.getById(Long.valueOf(id)));
+        model.addAttribute("contact", contactService.show(Long.valueOf(id)));
         return "contact/show";
     } 
 }

@@ -21,6 +21,10 @@ public class ContactService {
         return contactRepository.findAll();
     }
     
+    public Contact show(Long id) {
+        return getById(id);
+    }
+    
     public Contact getById(Long id) {
         Contact contact = new Contact();
         contact.setName("shihang");

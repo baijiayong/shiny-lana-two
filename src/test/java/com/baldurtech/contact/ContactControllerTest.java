@@ -68,6 +68,6 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     @Test
     public void 在ContactController中调用ContactService中的getById方法() {
         contactController.show(String.valueOf(CONTACT_ID), model);
-        verify(contactService).getById(CONTACT_ID);
+        verify(contactService).show(CONTACT_ID);
     }
 }
