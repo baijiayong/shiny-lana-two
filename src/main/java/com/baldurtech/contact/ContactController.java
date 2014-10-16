@@ -34,6 +34,11 @@ public class ContactController {
     
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public String show(Model model) {
+        model.addAttribute("contact", getById(1L));
+        return "contact/show";
+    }
+    
+    public Contact getById(Long id) {
         Contact contact = new Contact();
         contact.setName("shihang");
         contact.setMobile("18235100872");
@@ -44,7 +49,7 @@ public class ContactController {
         contact.setMemo("memo");
         contact.setJob("HR");
         contact.setJobLevel(3L);
-        model.addAttribute("contact", contact);
-        return "contact/show";
+        
+        return contact;
     }
 }
