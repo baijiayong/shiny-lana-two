@@ -61,6 +61,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 当URL为contact_show时应该访问show页面() throws Exception {
         mockMvc.perform(get("/contact/show"))
             .andExpect(view().name("contact/show"))
-            .andExpect(status().isOk());
+            .andExpect(status().isOk())
+            .andExpect(model().attributeExists("contact"));
     }
 }
