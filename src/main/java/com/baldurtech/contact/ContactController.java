@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.ui.Model;
 
@@ -33,23 +34,8 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/show", method = RequestMethod.GET)
-    public String show(Model model) {
-        model.addAttribute("contact", getById(1L));
+    public String show(@RequestParam(value="id", required=false, defaultValue="") String id, Model model) {
+        model.addAttribute("contact", contactService.getById(Long.valueOf(id)));
         return "contact/show";
-    }
-    
-    public Contact getById(Long id) {
-        Contact contact = new Contact();
-        contact.setName("shihang");
-        contact.setMobile("18235100872");
-        contact.setEmail("1335932576@qq.com");
-        contact.setVpmn("652994");
-        contact.setOfficeAddress("beizhang");
-        contact.setHomeAddress("taiyuan");
-        contact.setMemo("memo");
-        contact.setJob("HR");
-        contact.setJobLevel(3L);
-        
-        return contact;
-    }
+    } 
 }

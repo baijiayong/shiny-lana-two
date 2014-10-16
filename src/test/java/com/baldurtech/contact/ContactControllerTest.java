@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 public class ContactControllerTest extends WebAppConfigurationAware {
-
+    private Long CONTACT_ID = 1L;
     @Mock
     ContactService contactService;
     
@@ -59,9 +59,15 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Test
     public void 当URL为contact_show时应该访问show页面() throws Exception {
-        mockMvc.perform(get("/contact/show"))
+        mockMvc.perform(get("/contact/show").param("id",String.valueOf(CONTACT_ID)))
             .andExpect(view().name("contact/show"))
             .andExpect(status().isOk())
             .andExpect(model().attributeExists("contact"));
+    }
+    
+    @Test
+    public void 在ContactController中调用ContactService中的getById方法() {
+        contactController.show(String.valueOf(CONTACT_ID), model);
+        verify(contactService).getById(CONTACT_ID);
     }
 }
