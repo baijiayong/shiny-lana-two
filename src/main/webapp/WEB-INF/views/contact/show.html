@@ -5,5 +5,29 @@
 <body>
 	<h1 align="center">Show</h1>
 	<h2 align="center"  th:text="${contact}"></h2>
+    <table align="center" border="1">
+        <tr>
+            <td>Name</td>
+            <td>Mobile</td>
+            <td>Vpmn</td>
+            <td>Email</td>
+            <td>HomeAddress</td>
+            <td>OfficeAddress</td>
+            <td>Memo</td>
+            <td>Job</td>
+            <td>JobLevel</td>
+        </tr>
+        <tr>
+            <td th:text="${contact.name}"></td>
+            <td th:text="${contact.mobile}"></td>
+            <td th:text="${contact.vpmn}"></td>
+            <td th:text="${contact.email}"></td>
+            <td th:text="${contact.homeAddress}"></td>
+            <td th:text="${contact.officeAddress}"></td>
+            <td th:text="${contact.memo}"></td>
+            <td th:text="${contact.job}"></td>
+            <td th:text="${contact.jobLevel}"></td>
+        </tr>
+    </table>
 </body>
 </html>
