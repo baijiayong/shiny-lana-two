@@ -24,6 +24,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 public class ContactControllerTest extends WebAppConfigurationAware {
     private Long CONTACT_ID = 1L;
+    private Contact contact;
+    
     @Mock
     ContactService contactService;
     
@@ -35,7 +37,20 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Before
     public void initMocks() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this);  
+    }
+    
+    @Before
+    public void setup() {
+        contact = new Contact();
+        contact.setName("Xiaobai");
+        contact.setMobile("18233333333");
+        contact.setVpmn("63333");
+        contact.setEmail("xiaobai@gmail.com");
+        contact.setHomeAddress("Taiyuan");
+        contact.setOfficeAddress("BeiZhang");
+        contact.setJob("HR");
+        contact.setJobLevel(9L);
     }
     
    @Test
@@ -60,8 +75,18 @@ public class ContactControllerTest extends WebAppConfigurationAware {
 
     @Test
     public void 当URI为contact_save时应该访问save页面() throws Exception {
-        mockMvc.perform(post("/contact/save"))
-            .andExpect(view().name("contact/save"));
+        mockMvc.perform(post("/contact/save")
+               .param("name",String.valueOf(contact.getName()))
+               .param("mobile", String.valueOf(contact.getMobile()))
+               .param("vpmn", String.valueOf(contact.getVpmn()))
+               .param("email", String.valueOf(contact.getEmail()))
+               .param("homeAddress", String.valueOf(contact.getHomeAddress()))
+               .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
+               .param("job", String.valueOf(contact.getJob()))
+               .param("jobLevel", String.valueOf(contact.getJobLevel()))
+               .param("memo", String.valueOf(contact.getMemo())))
+               .andExpect(view().name("contact/save"))
+               .andExpect(model().attributeExists("contactName"));
     }
     
     @Ignore
