@@ -18,6 +18,7 @@ import static org.hamcrest.Matchers.containsString;
 
 import org.springframework.ui.Model;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -52,12 +53,18 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
-    public void 当URI为contact_create时应该访问create页面() {
+    public void 当URI为contact_create时应该访问create页面() throws Exception {
         mockMvc.perform(get("/contact/create"))
             .andExpect(view().name("contact/create"));
     }
 
-  //  @Ignore
+    @Test
+    public void 当URI为contact_save时应该访问save页面() throws Exception {
+        mockMvc.perform(post("/contact/save"))
+            .andExpect(view().name("contact/save"));
+    }
+    
+    @Ignore
     @Test
     public void 当URL为contact_show时应该访问show页面() throws Exception {
         mockMvc.perform(get("/contact/show").param("id",String.valueOf(CONTACT_ID)))

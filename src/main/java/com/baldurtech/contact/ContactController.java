@@ -27,9 +27,14 @@ public class ContactController {
         return "contact/list";
     }
     
-    @RequestMapping(value = "/create", method = REquestMethod.GET) 
+    @RequestMapping(value = "/create", method = RequestMethod.GET) 
     public String create() {
         return "contact/create";
+    }
+    
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save() {
+        return "contact/save";
     }
     
     @RequestMapping(value = "/show", method = RequestMethod.GET)
