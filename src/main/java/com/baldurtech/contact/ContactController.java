@@ -55,6 +55,9 @@ public class ContactController {
         contact.setJob(job);
         contact.setJobLevel(Long.valueOf(jobLevel));
         
+        
+        contactService.save(contact);
+        
         model.addAttribute("contactName", contact.getName());
         
         return "contact/save";

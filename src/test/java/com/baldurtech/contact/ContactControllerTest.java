@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.mockito.Mock;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
@@ -87,6 +88,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                .param("memo", String.valueOf(contact.getMemo())))
                .andExpect(view().name("contact/save"))
                .andExpect(model().attributeExists("contactName"));
+               
     }
     
     @Ignore
@@ -102,5 +104,20 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 在ContactController中调用ContactService中的getById方法() {
         contactController.show(String.valueOf(CONTACT_ID), model);
         verify(contactService).show(CONTACT_ID);
+    }
+    
+    @Test
+    public void 在ContactController中调用ContactService中的save方法() {
+        contactController.save(contact.getName(), 
+                               contact.getEmail(), 
+                               contact.getMobile(), 
+                               contact.getVpmn(), 
+                               contact.getOfficeAddress(),
+                               contact.getHomeAddress(), 
+                               contact.getMemo(),
+                               contact.getJob(),
+                               String.valueOf(contact.getJobLevel()),
+                               model);
+        verify(contactService).save(any(Contact.class));
     }
 }
