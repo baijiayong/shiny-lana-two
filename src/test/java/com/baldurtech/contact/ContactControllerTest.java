@@ -50,8 +50,14 @@ public class ContactControllerTest extends WebAppConfigurationAware {
         contactController.list(model);
         verify(contactService).getList();
     }
+    
+    @Test
+    public void 当URI为contact_create时应该访问create页面() {
+        mockMvc.perform(get("/contact/create"))
+            .andExpect(view().name("contact/create"));
+    }
 
-    @Ignore
+  //  @Ignore
     @Test
     public void 当URL为contact_show时应该访问show页面() throws Exception {
         mockMvc.perform(get("/contact/show").param("id",String.valueOf(CONTACT_ID)))
