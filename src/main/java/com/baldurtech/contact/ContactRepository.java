@@ -35,7 +35,8 @@ public class ContactRepository {
 		}
     }
     
+    @Transactional
     public void save(Contact contact) {
-        
+		entityManager.persist(contact);
     }
 }
