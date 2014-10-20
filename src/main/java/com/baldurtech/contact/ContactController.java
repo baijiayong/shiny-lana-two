@@ -71,7 +71,33 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@RequestParam(value="id") String id, @RequestParam("action") String action) {
-        return "contact/update";
+    public String update(@RequestParam(value="id") String id, 
+                         @RequestParam("name") String name, 
+                         @RequestParam("email") String email, 
+                         @RequestParam("mobile") String mobile,
+                         @RequestParam("vpmn") String vpmn,
+                         @RequestParam("officeAddress") String officeAddress,
+                         @RequestParam("homeAddress") String homeAddress,
+                         @RequestParam("memo") String memo,
+                         @RequestParam("job") String job,
+                         @RequestParam("jobLevel") String jobLevel,
+                         @RequestParam("action") String action,
+                         Model model) {
+        if("update".equals(action)) {
+            Contact contact = new Contact();
+            contact.setId(Long.valueOf(id));
+            contact.setName(name);
+            contact.setEmail(email);
+            contact.setMobile(mobile);
+            contact.setVpmn(vpmn);
+            contact.setOfficeAddress(officeAddress);
+            contact.setHomeAddress(homeAddress);
+            contact.setMemo(memo);
+            contact.setJob(job);
+            contact.setJobLevel(Long.valueOf(jobLevel));
+            model.addAttribute("contact", contact);
+            return "contact/update";
+        }        
+        return "contact/show";
     }
 }

@@ -125,7 +125,17 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 当action为update时应该访问update页面() throws Exception {
         mockMvc.perform(post("/contact/update")
                .param("id", String.valueOf(CONTACT_ID))
-               .param("action", String.valueOf("update")))
+               .param("name",String.valueOf(contact.getName()))
+               .param("email", String.valueOf(contact.getEmail()))
+               .param("mobile", String.valueOf(contact.getMobile()))
+               .param("vpmn", String.valueOf(contact.getVpmn()))
+               .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
+               .param("homeAddress", String.valueOf(contact.getHomeAddress()))
+               .param("memo", String.valueOf(contact.getMemo()))
+               .param("job", String.valueOf(contact.getJob()))
+               .param("jobLevel", String.valueOf(contact.getJobLevel()))
+               .param("action", "update"))
+               .andExpect(model().attributeExists("contact"))
                .andExpect(view().name("contact/update"));
     }
 }
