@@ -19,25 +19,43 @@
                 <table align="center" border="1">
                     <tr>
                         <td>Name</td>
-                        <td>Mobile</td>
-                        <td>Vpmn</td>
-                        <td>Email</td>
-                        <td>HomeAddress</td>
-                        <td>OfficeAddress</td>
-                        <td>Memo</td>
-                        <td>Job</td>
-                        <td>JobLevel</td>
+                        <td><input type="text" name="name" th:value="${contact.name}"/></td>
                     </tr>
                     <tr>
-                        <td th:text="${contact.name}"></td>
-                        <td th:text="${contact.mobile}"></td>
-                        <td th:text="${contact.vpmn}"></td>
-                        <td th:text="${contact.email}"></td>
-                        <td th:text="${contact.homeAddress}"></td>
-                        <td th:text="${contact.officeAddress}"></td>
-                        <td th:text="${contact.memo}"></td>
-                        <td th:text="${contact.job}"></td>
-                        <td th:text="${contact.jobLevel}"></td>
+                        <td>Mobile</td>
+                        <td><input type="text" name="mobile" th:value="${contact.mobile}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Vpmn</td>
+                        <td><input type="text" name="vpmn" th:value="${contact.vpmn}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" name="email" th:value="${contact.email}"/></td>
+                    </tr>
+                    <tr>
+                        <td>HomeAddress</td>
+                        <td><input type="text" name="homeAddress" th:value="${contact.homeAddress}"/></td>
+                    </tr>
+                    <tr>
+                        <td>OfficeAddress</td>
+                        <td><input type="text" name="officeAddress" th:value="${contact.officeAddress}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Memo</td>
+                        <td><input type="text" name="memo" th:value="${contact.memo}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Job</td>
+                        <td><input type="text" name="job" th:value="${contact.job}"/></td>
+                    </tr>
+                    <tr>
+                        <td>JobLevel</td>
+                        <td><input type="text" name="jobLevel" th:value="${contact.jobLevel}"/></td>
+                    </tr>                    
+                    <tr>
+                        <td align="center"><input type="submit" name="action" th:value="Update"/></td>
+                        <td align="center"><input type="submit" name="action" th:value="Delete"/></td>
                     </tr>
                     <tr>
                         <td align="center" colspan="11"><a th:href="@{'list'}" th:text="return"></a></td>

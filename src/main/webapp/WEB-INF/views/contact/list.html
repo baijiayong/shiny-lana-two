@@ -31,8 +31,8 @@
                     <td th:text="${contact.mobile}"></td>
                     <td th:text="${contact.vpmn}"></td>
                     <td th:text="${contact.homeAddress}"></td>
-                    <td><a th:href="@{'update?id=' + ${contact.id}}" th:text="Update"></a></td>
-                    <td><a th:href="@{'delete?id=' + ${contact.id}}" th:text="Delete"></a></td>
+                    <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="Update"></a></td>
+                    <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="Delete"></a></td>
                 </tr>         
             </table>       
         </div>
