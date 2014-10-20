@@ -17,19 +17,21 @@
             <h1 align="center">Contact List</h1>
             <table border="1" align="center">
                 <tr>
-                    <td colspan="4" align="center"><a th:href="@{'create'}" th:text="create"></a></td>
+                    <td colspan="5" align="center"><a th:href="@{'create'}" th:text="create"></a></td>
                 </tr>
                 <tr>
                     <th>Name</th>
                     <th>Mobile</th>
                     <th>Vpmn</th>
                     <th>Address</th>
+                    <th>Operation</th>
                 </tr>
                 <tr th:each="contact : ${list}">
                     <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="${contact.name}"></a></td>
                     <td th:text="${contact.mobile}"></td>
                     <td th:text="${contact.vpmn}"></td>
                     <td th:text="${contact.homeAddress}"></td>
+                    <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="Edit"></a></td>
                 </tr>         
             </table>       
         </div>
