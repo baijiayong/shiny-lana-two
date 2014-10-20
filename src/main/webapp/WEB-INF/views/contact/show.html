@@ -15,7 +15,7 @@
                 <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
             </th:block>
             <h1 align="center">Show</h1>
-            <form method="post" th:action="update">
+            <form method="POST" th:action="@{'update'}">
                 <table align="center" border="1">
                     <tr>
                         <td>Name</td>

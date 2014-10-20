@@ -25,6 +25,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 public class ContactControllerTest extends WebAppConfigurationAware {
     private Long CONTACT_ID = 1L;
+    private String action;
     private Contact contact;
     
     @Mock
@@ -44,6 +45,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     @Before
     public void setup() {
         contact = new Contact();
+        contact.setId(1L);
         contact.setName("Xiaobai");
         contact.setMobile("18233333333");
         contact.setVpmn("63333");
@@ -137,5 +139,22 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                .param("action", "update"))
                .andExpect(model().attributeExists("contact"))
                .andExpect(view().name("contact/update"));
+    }
+    
+    @Test
+    public void 在ContactController中的update方法里是否调用了ContactService的update方法() {
+        action = "update";
+        contactController.update(String.valueOf(contact.getId()), 
+                                 contact.getName(), 
+                                 contact.getEmail(), 
+                                 contact.getMobile(),
+                                 contact.getVpmn(), 
+                                 contact.getOfficeAddress(),
+                                 contact.getHomeAddress(), 
+                                 contact.getMemo(),
+                                 contact.getJob(),
+                                 String.valueOf(contact.getJobLevel()),
+                                 action, model);
+        verify(contactService).update(any(Contact.class));                         
     }
 }

@@ -95,9 +95,10 @@ public class ContactController {
             contact.setMemo(memo);
             contact.setJob(job);
             contact.setJobLevel(Long.valueOf(jobLevel));
-            model.addAttribute("contact", contact);
+            model.addAttribute("contact", contactService.update(contact));
+
             return "contact/update";
         }        
-        return "contact/show";
+        return "contact/list";
     }
 }
