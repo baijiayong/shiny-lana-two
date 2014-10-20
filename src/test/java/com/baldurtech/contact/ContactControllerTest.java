@@ -120,4 +120,12 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                                model);
         verify(contactService).save(any(Contact.class));
     }
+    
+    @Test
+    public void 当action为update时应该访问update页面() throws Exception {
+        mockMvc.perform(post("/contact/update")
+               .param("id", String.valueOf(CONTACT_ID))
+               .param("action", String.valueOf("update")))
+               .andExpect(view().name("contact/update"));
+    }
 }
