@@ -27,7 +27,6 @@
                         <td>Memo</td>
                         <td>Job</td>
                         <td>JobLevel</td>
-                        <td>Operation</td>
                     </tr>
                     <tr>
                         <td th:text="${contact.name}"></td>
@@ -39,10 +38,9 @@
                         <td th:text="${contact.memo}"></td>
                         <td th:text="${contact.job}"></td>
                         <td th:text="${contact.jobLevel}"></td>
-                        <td><input type="submit" name="action" value="Delete"/><input type="submit" name="action" value="Update"/></td>
                     </tr>
                     <tr>
-                        <td align="center" colspan="10"><a th:href="@{'list'}" th:text="return"></a></td>
+                        <td align="center" colspan="11"><a th:href="@{'list'}" th:text="return"></a></td>
                     </tr>
                 </table>
             </form>
