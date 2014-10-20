@@ -15,33 +15,37 @@
                 <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
             </th:block>
             <h1 align="center">Show</h1>
-            <table align="center" border="1">
-                <tr>
-                    <td>Name</td>
-                    <td>Mobile</td>
-                    <td>Vpmn</td>
-                    <td>Email</td>
-                    <td>HomeAddress</td>
-                    <td>OfficeAddress</td>
-                    <td>Memo</td>
-                    <td>Job</td>
-                    <td>JobLevel</td>
-                </tr>
-                <tr>
-                    <td th:text="${contact.name}"></td>
-                    <td th:text="${contact.mobile}"></td>
-                    <td th:text="${contact.vpmn}"></td>
-                    <td th:text="${contact.email}"></td>
-                    <td th:text="${contact.homeAddress}"></td>
-                    <td th:text="${contact.officeAddress}"></td>
-                    <td th:text="${contact.memo}"></td>
-                    <td th:text="${contact.job}"></td>
-                    <td th:text="${contact.jobLevel}"></td>
-                </tr>
-                <tr>
-                    <td align="center" colspan="9"><a th:href="@{'list'}" th:text="return"></a></td>
-                </tr>
-            </table>
+            <form>
+                <table align="center" border="1">
+                    <tr>
+                        <td>Name</td>
+                        <td>Mobile</td>
+                        <td>Vpmn</td>
+                        <td>Email</td>
+                        <td>HomeAddress</td>
+                        <td>OfficeAddress</td>
+                        <td>Memo</td>
+                        <td>Job</td>
+                        <td>JobLevel</td>
+                        <td>Operation</td>
+                    </tr>
+                    <tr>
+                        <td th:text="${contact.name}"></td>
+                        <td th:text="${contact.mobile}"></td>
+                        <td th:text="${contact.vpmn}"></td>
+                        <td th:text="${contact.email}"></td>
+                        <td th:text="${contact.homeAddress}"></td>
+                        <td th:text="${contact.officeAddress}"></td>
+                        <td th:text="${contact.memo}"></td>
+                        <td th:text="${contact.job}"></td>
+                        <td th:text="${contact.jobLevel}"></td>
+                        <td><input type="submit" name="action" value="Delete"/><input type="submit" name="action" value="Update"/></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="10"><a th:href="@{'list'}" th:text="return"></a></td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </body>
 </html>
