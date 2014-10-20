@@ -1,35 +1,47 @@
 <html>
 <head>
-	<title>show</title>
-</head>
-<body>
-	<h1 align="center">Show</h1>
-    <table align="center" border="1">
-        <tr>
-            <td>Name</td>
-            <td>Mobile</td>
-            <td>Vpmn</td>
-            <td>Email</td>
-            <td>HomeAddress</td>
-            <td>OfficeAddress</td>
-            <td>Memo</td>
-            <td>Job</td>
-            <td>JobLevel</td>
-        </tr>
-        <tr>
-            <td th:text="${contact.name}"></td>
-            <td th:text="${contact.mobile}"></td>
-            <td th:text="${contact.vpmn}"></td>
-            <td th:text="${contact.email}"></td>
-            <td th:text="${contact.homeAddress}"></td>
-            <td th:text="${contact.officeAddress}"></td>
-            <td th:text="${contact.memo}"></td>
-            <td th:text="${contact.job}"></td>
-            <td th:text="${contact.jobLevel}"></td>
-        </tr>
-        <tr>
-            <td align="center" colspan="9"><a th:href="@{'list'}" th:text="return"></a></td>
-        </tr>
-    </table>
-</body>
+        <title>contactShow</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+        <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- /* Handle the flash message */-->
+            <th:block th:if="${message != null}">
+                <!-- /* The message code is returned from the @Controller */ -->
+                <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+            </th:block>
+            <h1 align="center">Show</h1>
+            <table align="center" border="1">
+                <tr>
+                    <td>Name</td>
+                    <td>Mobile</td>
+                    <td>Vpmn</td>
+                    <td>Email</td>
+                    <td>HomeAddress</td>
+                    <td>OfficeAddress</td>
+                    <td>Memo</td>
+                    <td>Job</td>
+                    <td>JobLevel</td>
+                </tr>
+                <tr>
+                    <td th:text="${contact.name}"></td>
+                    <td th:text="${contact.mobile}"></td>
+                    <td th:text="${contact.vpmn}"></td>
+                    <td th:text="${contact.email}"></td>
+                    <td th:text="${contact.homeAddress}"></td>
+                    <td th:text="${contact.officeAddress}"></td>
+                    <td th:text="${contact.memo}"></td>
+                    <td th:text="${contact.job}"></td>
+                    <td th:text="${contact.jobLevel}"></td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="9"><a th:href="@{'list'}" th:text="return"></a></td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>
