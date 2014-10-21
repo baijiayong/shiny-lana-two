@@ -81,9 +81,7 @@ public class ContactController {
                          @RequestParam("memo") String memo,
                          @RequestParam("job") String job,
                          @RequestParam("jobLevel") String jobLevel,
-                         @RequestParam("action") String action,
                          Model model) {
-        if("update".equals(action)) {
             Contact contact = new Contact();
             contact.setId(Long.valueOf(id));
             contact.setName(name);
@@ -98,7 +96,10 @@ public class ContactController {
             model.addAttribute("contact", contactService.update(contact));
 
             return "contact/update";
-        }        
-        return "contact/list";
+    }
+    
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam("id") String id, Model model) {
+        return "contact/delete";
     }
 }

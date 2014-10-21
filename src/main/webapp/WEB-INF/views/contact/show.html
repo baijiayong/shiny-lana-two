@@ -9,14 +9,15 @@
     </head>
     <body>
         <div class="container">
-            <!-- /* Handle the flash message */-->
-            <th:block th:if="${message != null}">
-                <!-- /* The message code is returned from the @Controller */ -->
-                <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
-            </th:block>
-            <h1 align="center">Show</h1>
-            <form method="POST" th:action="@{'update'}">
-                <table align="center" border="1">
+        <!-- /* Handle the flash message */-->
+        <th:block th:if="${message != null}">
+            <!-- /* The message code is returned from the @Controller */ -->
+            <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+        </th:block>
+        <h1 align="center">Show</h1>           
+            
+            <table align="center" border="1">  
+                <form method="POST" th:action="@{'update'}">
                     <tr>
                         <td>Name</td>
                         <td><input type="text" name="name" th:value="${contact.name}"/></td>
@@ -53,16 +54,27 @@
                         <td>JobLevel</td>
                         <td><input type="text" name="jobLevel" th:value="${contact.jobLevel}"/></td>
                     </tr>                    
-                    <tr>
-                        <td align="center"><input type="submit" name="action" th:value="update"/>
-                        <input type="hidden" th:name="id" th:value="${contact.id}"/></td>
-                        <td align="center"><input type="submit" name="action" th:value="delete"/></td>
-                    </tr>
-                    <tr>
-                        <td align="center" colspan="11"><a th:href="@{'list'}" th:text="return"></a></td>
-                    </tr>
-                </table>
+                    <tr align="center">
+                        <td colspan="2">
+                            <input type="submit" name="action" th:value="update"/>
+                            <input type="hidden" th:name="id" th:value="${contact.id}"/>
+                        </td>
+                    </tr>                
             </form>
+                <form th:action="@{'delete'}" method="POST">
+                    <tr align="center">
+                        <td colspan="2">
+                            <input type="submit" name="action" th:value="delete"/>
+                            <input type="hidden" th:name="id" th:value="${contact.id}"/>
+                        </td>                        
+                    </tr>               
+                </form>            
+                <tr align="center">
+                    <td colspan="2">
+                        <a th:href="@{'list'}" th:text="return"></a>
+                    </td>
+                </tr>
+           </table> 
         </div>
     </body>
 </html>

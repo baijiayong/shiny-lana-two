@@ -79,15 +79,15 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     @Test
     public void 当URI为contact_save时应该访问save页面() throws Exception {
         mockMvc.perform(post("/contact/save")
-               .param("name",String.valueOf(contact.getName()))
-               .param("mobile", String.valueOf(contact.getMobile()))
-               .param("vpmn", String.valueOf(contact.getVpmn()))
-               .param("email", String.valueOf(contact.getEmail()))
-               .param("homeAddress", String.valueOf(contact.getHomeAddress()))
-               .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
-               .param("job", String.valueOf(contact.getJob()))
-               .param("jobLevel", String.valueOf(contact.getJobLevel()))
-               .param("memo", String.valueOf(contact.getMemo())))
+                       .param("name",String.valueOf(contact.getName()))
+                       .param("mobile", String.valueOf(contact.getMobile()))
+                       .param("vpmn", String.valueOf(contact.getVpmn()))
+                       .param("email", String.valueOf(contact.getEmail()))
+                       .param("homeAddress", String.valueOf(contact.getHomeAddress()))
+                       .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
+                       .param("job", String.valueOf(contact.getJob()))
+                       .param("jobLevel", String.valueOf(contact.getJobLevel()))
+                       .param("memo", String.valueOf(contact.getMemo())))
                .andExpect(view().name("contact/save"))
                .andExpect(model().attributeExists("contactName"));
                
@@ -126,17 +126,16 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     @Test
     public void 当action为update时应该访问update页面() throws Exception {
         mockMvc.perform(post("/contact/update")
-               .param("id", String.valueOf(CONTACT_ID))
-               .param("name",String.valueOf(contact.getName()))
-               .param("email", String.valueOf(contact.getEmail()))
-               .param("mobile", String.valueOf(contact.getMobile()))
-               .param("vpmn", String.valueOf(contact.getVpmn()))
-               .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
-               .param("homeAddress", String.valueOf(contact.getHomeAddress()))
-               .param("memo", String.valueOf(contact.getMemo()))
-               .param("job", String.valueOf(contact.getJob()))
-               .param("jobLevel", String.valueOf(contact.getJobLevel()))
-               .param("action", "update"))
+                       .param("id", String.valueOf(CONTACT_ID))
+                       .param("name",String.valueOf(contact.getName()))
+                       .param("email", String.valueOf(contact.getEmail()))
+                       .param("mobile", String.valueOf(contact.getMobile()))
+                       .param("vpmn", String.valueOf(contact.getVpmn()))
+                       .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
+                       .param("homeAddress", String.valueOf(contact.getHomeAddress()))
+                       .param("memo", String.valueOf(contact.getMemo()))
+                       .param("job", String.valueOf(contact.getJob()))
+                       .param("jobLevel", String.valueOf(contact.getJobLevel())))
                .andExpect(model().attributeExists("contact"))
                .andExpect(view().name("contact/update"));
     }
@@ -154,7 +153,14 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                                  contact.getMemo(),
                                  contact.getJob(),
                                  String.valueOf(contact.getJobLevel()),
-                                 action, model);
+                                 model);
         verify(contactService).update(any(Contact.class));                         
+    }
+    
+    @Test
+    public void 当action为delete时应该访问delete页面() throws Exception{
+        mockMvc.perform(post("/contact/delete")
+                        .param("id", String.valueOf(CONTACT_ID)))
+               .andExpect(view().name("contact/delete"));
     }
 }
