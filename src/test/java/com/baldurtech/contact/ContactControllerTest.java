@@ -161,6 +161,13 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 当action为delete时应该访问delete页面() throws Exception{
         mockMvc.perform(post("/contact/delete")
                         .param("id", String.valueOf(CONTACT_ID)))
+               .andExpect(model().attributeExists("contact"))
                .andExpect(view().name("contact/delete"));
+    }
+    
+    @Test
+    public void 在ContactController中的delete方法里是否正常调用了ContactService的delete方法() {
+        contactController.delete(String.valueOf(CONTACT_ID), model);
+        verify(contactService).delete(CONTACT_ID);
     }
 }
