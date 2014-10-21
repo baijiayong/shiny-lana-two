@@ -99,7 +99,7 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String delete(@RequestParam("id") String id, Model model) {
+    public String delete(@RequestParam("id") String id, Model model) {       
         model.addAttribute("contact", contactService.show(Long.valueOf(id)));
         contactService.delete(Long.valueOf(id));
         return "contact/delete";
