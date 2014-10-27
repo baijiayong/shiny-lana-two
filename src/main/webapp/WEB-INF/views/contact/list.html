@@ -26,7 +26,7 @@
                     <th>Address</th>
                     <th colspan="2">Operation</th>
                 </tr>
-                <tr th:each="contact : ${list}">
+                <tr th:each="contact : ${contactList}">
                     <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="${contact.name}"></a></td>
                     <td th:text="${contact.mobile}"></td>
                     <td th:text="${contact.vpmn}"></td>
