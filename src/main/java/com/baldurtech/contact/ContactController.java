@@ -33,7 +33,8 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.GET) 
-    public String create() {
+    public String create(Model model) {
+        model.addAttribute("contact", new Contact());
         return "contact/create";
     }
     
