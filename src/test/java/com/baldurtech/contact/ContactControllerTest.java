@@ -108,7 +108,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Test
     public void 在ContactController中调用ContactService中的save方法() {
-        contactController.save(contact, model);
+        contactController.save(contact);
         verify(contactService).save(any(Contact.class));
     }
     
@@ -125,14 +125,13 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                        .param("memo", String.valueOf(contact.getMemo()))
                        .param("job", String.valueOf(contact.getJob()))
                        .param("jobLevel", String.valueOf(contact.getJobLevel())))
-               .andExpect(model().attributeExists("contact"))
                .andExpect(redirectedUrl("list"));
     }
     
     @Test
     public void 在ContactController中的update方法里是否调用了ContactService的update方法() {
         action = "update";
-        contactController.update(contact, model);
+        contactController.update(contact);
         verify(contactService).update(any(Contact.class));                         
     }
     
@@ -145,7 +144,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Test
     public void 在ContactController中的delete方法里是否正常调用了ContactService的delete方法() {
-        contactController.delete(String.valueOf(CONTACT_ID), model);
+        contactController.delete(String.valueOf(CONTACT_ID));
         verify(contactService).delete(CONTACT_ID);
     }
 }

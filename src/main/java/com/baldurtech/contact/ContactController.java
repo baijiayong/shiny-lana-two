@@ -34,7 +34,7 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("contact") Contact contact, Model model) {
+    public String save(@ModelAttribute("contact") Contact contact) {
         contactService.save(contact);
         return "redirect:list";
     }
@@ -47,13 +47,13 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("contact") Contact contact, Model model) {
+    public String update(@ModelAttribute("contact") Contact contact) {
         contactService.update(contact);
         return "redirect:list";
     }
     
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String delete(@RequestParam("id") String id, Model model) {       
+    public String delete(@RequestParam("id") String id) {       
         contactService.delete(Long.valueOf(id));
         return "redirect:list";
     }
