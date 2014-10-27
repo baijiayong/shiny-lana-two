@@ -72,16 +72,15 @@ public class ContactController {
                          Model model) {
         Contact contact = setContactWithId(id, name, email, mobile, vpmn, officeAddress, homeAddress, memo, job, jobLevel);
         
-        model.addAttribute("contact", contactService.update(contact));
+        contactService.update(contact);
         
-        return "contact/update";
+        return "redirect:list";
     }
     
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam("id") String id, Model model) {       
-        model.addAttribute("contact", contactService.show(Long.valueOf(id)));
         contactService.delete(Long.valueOf(id));
-        return "contact/delete";
+        return "redirect:list";
     }
     
     public Contact setContact(String name
