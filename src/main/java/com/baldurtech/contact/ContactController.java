@@ -3,6 +3,7 @@ package com.baldurtech.contact;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,21 +34,8 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@RequestParam("name") String name, 
-                       @RequestParam("email") String email, 
-                       @RequestParam("mobile") String mobile,
-                       @RequestParam("vpmn") String vpmn,
-                       @RequestParam("officeAddress") String officeAddress,
-                       @RequestParam("homeAddress") String homeAddress,
-                       @RequestParam("memo") String memo,
-                       @RequestParam("job") String job,
-                       @RequestParam("jobLevel") String jobLevel,
-                       Model model
-                       ) {
-        Contact contact = setContact(name, email, mobile, vpmn, officeAddress, homeAddress, memo, job, jobLevel);
-        
+    public String save(@ModelAttribute("contact") Contact contact, Model model) {
         contactService.save(contact);
-        
         return "redirect:list";
     }
     
