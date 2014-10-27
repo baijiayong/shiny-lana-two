@@ -23,6 +23,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import org.springframework.validation.BindingResult;
+
 public class ContactControllerTest extends WebAppConfigurationAware {
     private Long CONTACT_ID = 1L;
     private String action;
@@ -33,6 +35,9 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Mock
     Model model;
+    
+    @Mock
+    BindingResult result;
     
     @InjectMocks
     ContactController contactController;
@@ -108,7 +113,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Test
     public void 在ContactController中调用ContactService中的save方法() {
-        contactController.save(contact);
+        contactController.save(contact, result);
         verify(contactService).save(any(Contact.class));
     }
     

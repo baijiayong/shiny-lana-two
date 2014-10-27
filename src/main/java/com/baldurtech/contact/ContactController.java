@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.ui.Model;
 
+import javax.validation.Valid;
+
+import org.springframework.validation.BindingResult;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -34,8 +38,14 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("contact") Contact contact) {
-        contactService.save(contact);
+    public String save(@Valid @ModelAttribute("contact") Contact contact, BindingResult result) {
+        if(result.hasErrors()) {
+            return "contact/create";
+        }
+        
+        if(contact != null) {
+            contactService.save(contact);
+        }
         return "redirect:list";
     }
     
