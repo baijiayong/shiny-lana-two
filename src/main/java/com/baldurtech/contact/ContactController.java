@@ -44,17 +44,7 @@ public class ContactController {
                        @RequestParam("jobLevel") String jobLevel,
                        Model model
                        ) {
-        Contact contact = new Contact();
-        contact.setName(name);
-        contact.setEmail(email);
-        contact.setMobile(mobile);
-        contact.setVpmn(vpmn);
-        contact.setOfficeAddress(officeAddress);
-        contact.setHomeAddress(homeAddress);
-        contact.setMemo(memo);
-        contact.setJob(job);
-        contact.setJobLevel(Long.valueOf(jobLevel));
-        
+        Contact contact = setContact(name, email, mobile, vpmn, officeAddress, homeAddress, memo, job, jobLevel);
         
         contactService.save(contact);
         
@@ -104,4 +94,28 @@ public class ContactController {
         contactService.delete(Long.valueOf(id));
         return "contact/delete";
     }
+    
+    public Contact setContact(String name
+                            , String email
+                            , String mobile
+                            , String vpmn
+                            , String officeAddress
+                            , String homeAddress
+                            , String memo
+                            , String job
+                            , String jobLevel) {
+        Contact contact = new Contact();
+        contact.setName(name);
+        contact.setEmail(email);
+        contact.setMobile(mobile);
+        contact.setVpmn(vpmn);
+        contact.setOfficeAddress(officeAddress);
+        contact.setHomeAddress(homeAddress);
+        contact.setMemo(memo);
+        contact.setJob(job);
+        contact.setJobLevel(Long.valueOf(jobLevel));
+        
+        return contact;
+    }
+        
 }
