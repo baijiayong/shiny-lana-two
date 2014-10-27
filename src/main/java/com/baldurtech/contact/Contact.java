@@ -1,7 +1,13 @@
 package com.baldurtech.contact;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Email;
 
 @Table(name = "contact")
 @NamedQueries({
@@ -17,14 +23,39 @@ public class Contact implements java.io.Serializable {
 	@GeneratedValue
 	private Long id;
 
+    @NotNull
+    @NotBlank
     private String name;
+    
+    @NotNull
+    @NotBlank
     private String mobile;
+    
+    @NotNull
+    @NotBlank
+    @Size(max = 6, min = 4, message = "the length must between 4 to 6")
     private String vpmn;
+    
+    @NotNull
+    @NotBlank
+    @Email(message = "not a valid email format")
     private String email;
+    
+    @NotNull
+    @NotBlank
     private String homeAddress;
+
+    @NotNull
+    @NotBlank
     private String officeAddress;
+
     private String memo;
+    
+    @NotNull
+    @NotBlank
     private String job;
+    
+    @NotNull
     private Long jobLevel;
 
     public void setId(Long id)
