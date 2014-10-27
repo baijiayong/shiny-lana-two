@@ -88,8 +88,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                        .param("job", String.valueOf(contact.getJob()))
                        .param("jobLevel", String.valueOf(contact.getJobLevel()))
                        .param("memo", String.valueOf(contact.getMemo())))
-               .andExpect(view().name("contact/save"))
-               .andExpect(model().attributeExists("contactName"));
+               .andExpect(redirectedUrl("list"));
                
     }
     
@@ -109,16 +108,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Test
     public void 在ContactController中调用ContactService中的save方法() {
-        contactController.save(contact.getName(), 
-                               contact.getEmail(), 
-                               contact.getMobile(), 
-                               contact.getVpmn(), 
-                               contact.getOfficeAddress(),
-                               contact.getHomeAddress(), 
-                               contact.getMemo(),
-                               contact.getJob(),
-                               String.valueOf(contact.getJobLevel()),
-                               model);
+        contactController.save(contact, model);
         verify(contactService).save(any(Contact.class));
     }
     
@@ -136,23 +126,13 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                        .param("job", String.valueOf(contact.getJob()))
                        .param("jobLevel", String.valueOf(contact.getJobLevel())))
                .andExpect(model().attributeExists("contact"))
-               .andExpect(view().name("contact/update"));
+               .andExpect(redirectedUrl("list"));
     }
     
     @Test
     public void 在ContactController中的update方法里是否调用了ContactService的update方法() {
         action = "update";
-        contactController.update(String.valueOf(contact.getId()), 
-                                 contact.getName(), 
-                                 contact.getEmail(), 
-                                 contact.getMobile(),
-                                 contact.getVpmn(), 
-                                 contact.getOfficeAddress(),
-                                 contact.getHomeAddress(), 
-                                 contact.getMemo(),
-                                 contact.getJob(),
-                                 String.valueOf(contact.getJobLevel()),
-                                 model);
+        contactController.update(contact, model);
         verify(contactService).update(any(Contact.class));                         
     }
     
@@ -160,8 +140,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 当action为delete时应该访问delete页面() throws Exception{
         mockMvc.perform(post("/contact/delete")
                         .param("id", String.valueOf(CONTACT_ID)))
-               .andExpect(model().attributeExists("contact"))
-               .andExpect(view().name("contact/delete"));
+               .andExpect(redirectedUrl("list"));
     }
     
     @Test
