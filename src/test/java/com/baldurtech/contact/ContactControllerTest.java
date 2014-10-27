@@ -60,7 +60,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 当URI为contact_list时应该由ContactController处理() throws Exception {
         mockMvc.perform(get("/contact/list"))
                .andExpect(view().name("contact/list"))
-               .andExpect(model().attributeExists("list"));
+               .andExpect(model().attributeExists("contactList"));
 
     }
     
@@ -93,7 +93,6 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                
     }
     
-    @Ignore
     @Test
     public void 当URL为contact_show时应该访问show页面() throws Exception {
         mockMvc.perform(get("/contact/show").param("id",String.valueOf(CONTACT_ID)))

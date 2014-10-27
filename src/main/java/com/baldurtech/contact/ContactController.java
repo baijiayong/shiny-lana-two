@@ -23,7 +23,7 @@ public class ContactController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-        model.addAttribute("list", contactService.getList());
+        model.addAttribute("contactList", contactService.getList());
         return "contact/list";
     }
     
