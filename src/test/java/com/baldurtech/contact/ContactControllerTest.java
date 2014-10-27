@@ -136,7 +136,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
-    public void 当action为delete时应该访问delete页面() throws Exception{
+    public void 当action为delete时应该访问delete页面() throws Exception {
         mockMvc.perform(post("/contact/delete")
                         .param("id", String.valueOf(CONTACT_ID)))
                .andExpect(redirectedUrl("list"));

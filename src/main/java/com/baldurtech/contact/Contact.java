@@ -5,8 +5,8 @@ import javax.persistence.*;
 
 @Table(name = "contact")
 @NamedQueries({
-@NamedQuery(name = Contact.FIND_ALL, query = "from Contact"),
-@NamedQuery(name = Contact.GET_BY_ID, query = "SELECT c FROM Contact c WHERE c.id = :id")
+    @NamedQuery(name = Contact.FIND_ALL, query = "from Contact"),
+    @NamedQuery(name = Contact.GET_BY_ID, query = "SELECT c FROM Contact c WHERE c.id = :id")
 })
 @Entity
 public class Contact implements java.io.Serializable {
