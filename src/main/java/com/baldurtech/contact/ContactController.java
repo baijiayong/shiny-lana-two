@@ -47,21 +47,8 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@RequestParam(value="id") String id, 
-                         @RequestParam("name") String name, 
-                         @RequestParam("email") String email, 
-                         @RequestParam("mobile") String mobile,
-                         @RequestParam("vpmn") String vpmn,
-                         @RequestParam("officeAddress") String officeAddress,
-                         @RequestParam("homeAddress") String homeAddress,
-                         @RequestParam("memo") String memo,
-                         @RequestParam("job") String job,
-                         @RequestParam("jobLevel") String jobLevel,
-                         Model model) {
-        Contact contact = setContactWithId(id, name, email, mobile, vpmn, officeAddress, homeAddress, memo, job, jobLevel);
-        
+    public String update(@ModelAttribute("contact") Contact contact, Model model) {
         contactService.update(contact);
-        
         return "redirect:list";
     }
     
@@ -69,45 +56,5 @@ public class ContactController {
     public String delete(@RequestParam("id") String id, Model model) {       
         contactService.delete(Long.valueOf(id));
         return "redirect:list";
-    }
-    
-    public Contact setContact(String name
-                            , String email
-                            , String mobile
-                            , String vpmn
-                            , String officeAddress
-                            , String homeAddress
-                            , String memo
-                            , String job
-                            , String jobLevel) {
-        Contact contact = new Contact();
-        contact.setName(name);
-        contact.setEmail(email);
-        contact.setMobile(mobile);
-        contact.setVpmn(vpmn);
-        contact.setOfficeAddress(officeAddress);
-        contact.setHomeAddress(homeAddress);
-        contact.setMemo(memo);
-        contact.setJob(job);
-        contact.setJobLevel(Long.valueOf(jobLevel));
-        
-        return contact;
-    }  
-
-    public Contact setContactWithId(String id
-                                  , String name
-                                  , String email
-                                  , String mobile
-                                  , String vpmn
-                                  , String officeAddress
-                                  , String homeAddress
-                                  , String memo
-                                  , String job
-                                  , String jobLevel) {
-        Contact contact = setContact(name, email, mobile, vpmn, officeAddress, homeAddress, memo, job, jobLevel);
-        
-        contact.setId(Long.valueOf(id));
-        
-        return contact;
     }
 }
