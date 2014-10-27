@@ -29,11 +29,12 @@ public class Contact implements java.io.Serializable {
     
     @NotNull
     @NotBlank
+    @Digits(integer=11, fraction=0)
     private String mobile;
     
     @NotNull
     @NotBlank
-    @Size(max = 6, min = 4, message = "the length must between 4 to 6")
+    @Size(max = 6, min = 4)
     private String vpmn;
     
     @NotNull
