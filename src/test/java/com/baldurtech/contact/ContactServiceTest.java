@@ -38,7 +38,7 @@ public class ContactServiceTest {
     
     @Test
     public void 在ContactService中将会调用ContactRepository的findAll方法() {
-        contactService.getList();
+        contactService.findAll();
         verify(contactRepository).findAll();
     }
     

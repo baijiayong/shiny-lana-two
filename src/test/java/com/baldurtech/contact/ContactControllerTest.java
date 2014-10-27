@@ -65,9 +65,9 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
-    public void 在ContactController中调用ContactService中的getList方法() {
+    public void 在ContactController中调用ContactService中的findAll方法() {
         contactController.list(model);
-        verify(contactService).getList();
+        verify(contactService).findAll();
     }
     
     @Test
