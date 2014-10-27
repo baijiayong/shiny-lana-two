@@ -48,9 +48,7 @@ public class ContactController {
         
         contactService.save(contact);
         
-        model.addAttribute("contactName", contact.getName());
-        
-        return "contact/save";
+        return "redirect:list";
     }
     
     @RequestMapping(value = "/show", method = RequestMethod.GET)
