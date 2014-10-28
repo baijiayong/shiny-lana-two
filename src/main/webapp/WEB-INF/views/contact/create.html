@@ -54,7 +54,7 @@
                     </tr>
                     <tr>
                         <td align="right">JobLevel:</td>
-                        <td><input type="text" name="jobLevel"/></td>
+                        <td><input type="text" th:field="*{jobLevel}"/></td>
                         <td th:if="${#fields.hasErrors('jobLevel')}" th:errors="*{jobLevel}">Name Error</td>
                     </tr>
                     <tr>
