@@ -2,6 +2,7 @@ package com.baldurtech.contact;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.Set;
 
@@ -48,4 +49,11 @@ public class ContactValidationTest {
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
     
+    @Test
+    public void mobileIsBlank() {
+        contact.setMobile("    ");
+        
+        constraintViolations = validator.validate(contact);
+        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
+    }  
 }
