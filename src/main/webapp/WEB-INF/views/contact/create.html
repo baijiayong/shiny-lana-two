@@ -39,12 +39,12 @@
                     </tr>
                     <tr>
                         <td align="right">HomeAddress:</td>
-                        <td><input type="text" name="homeAddress"/></td>
+                        <td><input type="text" th:field="*{homeAddress}"/></td>
                         <td th:if="${#fields.hasErrors('homeAddress')}" th:errors="*{homeAddress}">Name Error</td>
                     </tr>
                     <tr>
                         <td align="right">OfficeAddress:</td>
-                        <td><input type="text" name="officeAddress"/></td>
+                        <td><input type="text" th:field="*{officeAddress}"/></td>
                         <td th:if="${#fields.hasErrors('officeAddress')}" th:errors="*{officeAddress}">Name Error</td>
                     </tr>
                     <tr>
