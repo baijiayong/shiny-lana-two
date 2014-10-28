@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td align="right">Email:</td>
-                        <td><input type="email" name="email"/></td>
+                        <td><input type="email" th:field="*{email}"/></td>
                         <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</td>
                     </tr>
                     <tr>
