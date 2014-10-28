@@ -40,4 +40,12 @@ public class ContactValidationTest {
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());   
     }
     
+    @Test
+    public void mobileIsNull() {
+        contact.setMobile(null);
+        
+        constraintViolations = validator.validate(contact);
+        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    }
+    
 }
