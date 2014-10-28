@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <td align="right">Job:</td>
-                        <td><input type="text" name="job"/></td>
+                        <td><input type="text" th:field="*{job}"/></td>
                         <td th:if="${#fields.hasErrors('job')}" th:errors="*{job}">Name Error</td>
                     </tr>
                     <tr>
@@ -59,7 +59,7 @@
                     </tr>
                     <tr>
                         <td align="right">Memo:</td>
-                        <td><input type="text" name="memo"/></td>
+                        <td><input type="text" th:field="*{memo}"/></td>
                         <td th:if="${#fields.hasErrors('memo')}" th:errors="*{memo}">Name Error</td>
                     </tr>
                     <tr>
