@@ -29,7 +29,7 @@
                     </tr>
                     <tr>
                         <td align="right">VPMN:</td>
-                        <td><input type="text" name="vpmn"/></td>
+                        <td><input type="text" th:field="*{vpmn}"/></td>
                         <td th:if="${#fields.hasErrors('vpmn')}" th:errors="*{vpmn}">Name Error</td>
                     </tr>
                     <tr>
