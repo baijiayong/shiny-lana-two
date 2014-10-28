@@ -80,7 +80,7 @@ public class ContactValidationTest {
     public void MobileIsBlank() {
         Contact contact = new Contact();
         contact.setName("XiaoBai");
-        contact.setMobile(null);
+        contact.setMobile("    ");
         contact.setVpmn("62222");
         contact.setEmail("a@a.com");
         contact.setHomeAddress("TaiYuan");
@@ -91,7 +91,7 @@ public class ContactValidationTest {
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
-        assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
+        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
     }
 }
 
