@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <td align="right">Mobile:</td>
-                        <td><input type="text" name="mobile"/></td>
+                        <td><input type="text" th:field="*{mobile}"/></td>
                         <td th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Name Error</td>
                     </tr>
                     <tr>

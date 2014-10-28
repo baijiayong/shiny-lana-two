@@ -6,6 +6,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Email;
 
@@ -29,7 +30,7 @@ public class Contact implements java.io.Serializable {
     
     @NotNull
     @NotBlank
-    @Digits(integer=11, fraction=0)
+    @Pattern(regexp="\\b1\\d{10}", message="not a valid mobile format")
     private String mobile;
     
     @NotNull
