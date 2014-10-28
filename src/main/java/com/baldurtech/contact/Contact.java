@@ -27,8 +27,6 @@ public class Contact implements java.io.Serializable {
     @NotBlank
     private String name;
     
-    @NotNull
-    @NotBlank
     @Pattern(regexp="\\b1\\d{10}", message="not a valid mobile format")
     private String mobile;
     
