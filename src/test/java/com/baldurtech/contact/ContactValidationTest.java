@@ -15,45 +15,28 @@ import static org.junit.Assert.assertEquals;
 
 public class ContactValidationTest {
     private static Validator validator;
-    private static Contact contact;
-    private static Set<ConstraintViolation<Contact>> constraintViolations;
     
     @BeforeClass
     public static void setup() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        validator = factory.getValidator();
-        contact = new Contact();       
+        validator = factory.getValidator();      
     }
     
     @Test
     public void nameIsNull() {
+        Contact contact = new Contact();
         contact.setName(null);
+        contact.setMobile("18235100872");
+        contact.setVpmn("62222");
+        contact.setEmail("a@a.com");
+        contact.setHomeAddress("TaiYuan");
+        contact.setOfficeAddress("BeiZhang");
+        contact.setJob("HR");
+        contact.setJobLevel(9L);
+        contact.setMemo("memo");
         
-        constraintViolations = validator.validate(contact);
+        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        assertEquals( 1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
-    
-    @Test
-    public void nameIsBlank() {
-        contact.setName("   ");
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());   
-    }
-    
-    @Test
-    public void mobileIsNull() {
-        contact.setMobile(null);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
-    }
-    
-    @Test
-    public void mobileIsBlank() {
-        contact.setMobile("    ");
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
-    }  
 }

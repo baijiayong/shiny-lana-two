@@ -24,7 +24,6 @@ public class Contact implements java.io.Serializable {
 	@GeneratedValue
 	private Long id;
 
-    @NotNull
     @NotBlank
     private String name;
     
