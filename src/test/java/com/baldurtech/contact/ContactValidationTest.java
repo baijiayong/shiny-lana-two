@@ -29,4 +29,13 @@ public class ContactValidationTest {
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
+    
+    @Test
+    public void nameIsBlank() {
+        Contact contact = new Contact();
+        contact.setName("   ");
+        
+        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());   
+    }
 }
