@@ -32,7 +32,6 @@ public class Contact implements java.io.Serializable {
     private String mobile;
     
     @NotNull
-    @NotBlank
     @Pattern(regexp="\\d{4,6}", message="elements must be digits and must between 4 to 6")
     private String vpmn;
     
