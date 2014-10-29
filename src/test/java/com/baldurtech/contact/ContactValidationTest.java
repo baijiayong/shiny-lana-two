@@ -25,16 +25,19 @@ public class ContactValidationTest {
     }
     
     @Test
-    public void nameIsNull() {
-        contact = new Contact(null
-                            , "18235100872"
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
+    public void name_cannot_be_null() {
+        contact = new Contact();
+        contact.setName("Shihang");
+        contact.setMobile("18235100872");
+        contact.setVpmn("62222");
+        contact.setEmail("a@a.com");
+        contact.setHomeAddress("TaiYuan");
+        contact.setOfficeAddress("BeiZhang");
+        contact.setMemo("memo");
+        contact.setJob("HR");
+        contact.setJobLevel(9L);
+        
+        contact.setName(null);
         
         constraintViolations = validator.validate(contact);
         assertEquals( 1, constraintViolations.size());
