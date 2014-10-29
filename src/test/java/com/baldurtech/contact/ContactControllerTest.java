@@ -107,8 +107,23 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
-    public void 在ContactController中调用ContactService中的getById方法() {
+    public void 在ContactController中的show方法调用ContactService中的getById方法() {
         contactController.show(String.valueOf(CONTACT_ID), model);
+        verify(contactService).show(CONTACT_ID);
+    }
+    
+    @Ignore
+    @Test
+    public void 当URL为contact_update时应该访问update页面() throws Exception {
+        mockMvc.perform(get("/contact/update").param("id",String.valueOf(CONTACT_ID)))
+            .andExpect(view().name("contact/update"))
+            .andExpect(status().isOk()) 
+            .andExpect(model().attributeExists("contact"));
+    }
+    
+    @Test
+    public void 在ContactController中的update方法调用ContactService中的getById方法() {
+        contactController.update(String.valueOf(CONTACT_ID), model);
         verify(contactService).show(CONTACT_ID);
     }
     
