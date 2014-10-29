@@ -39,7 +39,7 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@Valid @ModelAttribute("contact") Contact contact, BindingResult result) {
+    public String save(@Valid @ModelAttribute("contact") Contact contact, BindingResult result, Model model) {
         if(result.hasErrors()) {
             return "contact/create";
         }
@@ -47,7 +47,9 @@ public class ContactController {
         if(contact != null) {
             contactService.save(contact);
         }
-        return "redirect:list";
+        
+        model.addAttribute("id", contact.getId());
+        return "redirect:show";
     }
     
     @RequestMapping(value = "/show", method = RequestMethod.GET)
