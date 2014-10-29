@@ -58,16 +58,15 @@ public class ContactValidationTest {
     
     @Test
     public void MobileIsNull() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile(null);
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , null
+                                    , "62222"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -76,16 +75,15 @@ public class ContactValidationTest {
     
     @Test
     public void MobileIsBlank() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("    ");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "    "
+                                    , "62222"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -94,17 +92,16 @@ public class ContactValidationTest {
     
     @Test
     public void MobileIsNotDigits() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("abcdefghijk");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
-        
+       Contact contact = new Contact("XiaoBai"
+                                    , "abcdefghijk"
+                                    , "62222"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
+                                    
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
@@ -112,16 +109,15 @@ public class ContactValidationTest {
     
     @Test
     public void mobileIsTooShot() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("1822222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+       Contact contact = new Contact("XiaoBai"
+                                    , "182"
+                                    , "62222"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -130,16 +126,15 @@ public class ContactValidationTest {
     
     @Test
     public void mobileIsNotStartWithOne() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("28222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "22222222222"
+                                    , "62222"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -148,16 +143,15 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsNull() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn(null);
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , null
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -166,16 +160,15 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsBlank() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("    ");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+       Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , "   "
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -184,16 +177,15 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsTooShot() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("6");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , "6"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -202,16 +194,15 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsTooLong() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("6666666");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , "6666666"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -220,16 +211,15 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsNotDigit() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("sdfsd");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , "abcde"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -238,16 +228,15 @@ public class ContactValidationTest {
     
     @Test
     public void emailIsNull() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail(null);
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , "66666"
+                                    , null
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -256,16 +245,15 @@ public class ContactValidationTest {
     
     @Test
     public void emailIsBlank() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("     ");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , "66666"
+                                    , "    "
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -274,16 +262,15 @@ public class ContactValidationTest {
     
     @Test
     public void emailIsNotValidFormat() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("asdfsdf");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                                    , "18222222222"
+                                    , "66666"
+                                    , "sdfsf"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -292,16 +279,15 @@ public class ContactValidationTest {
     
     @Test
     public void homeAddressIsNull() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress(null);
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , null
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -310,17 +296,15 @@ public class ContactValidationTest {
     
     @Test
     public void homeAddressIsBlank() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("    ");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
-        
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , "   "
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
@@ -328,16 +312,15 @@ public class ContactValidationTest {
     
     @Test
     public void officeAddressIsNull() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress(null);
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , null
+                            , "memo"
+                            , "HR"
+                            , 9L);
 
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -346,16 +329,15 @@ public class ContactValidationTest {
     
     @Test
     public void officeAddressIsBlank() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("   ");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "    "
+                            , "memo"
+                            , "HR"
+                            , 9L);
 
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -364,17 +346,15 @@ public class ContactValidationTest {
         
     @Test
     public void jobIsNull() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob(null);
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
-
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , null
+                            , 9L);
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
@@ -382,16 +362,15 @@ public class ContactValidationTest {
         
     @Test
     public void jobIsBlank() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("   ");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "     "
+                            , 9L);
 
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -400,16 +379,15 @@ public class ContactValidationTest {
         
     @Test
     public void jobLevelIsNull() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(null);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , null);
 
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -418,16 +396,15 @@ public class ContactValidationTest {
         
     @Test
     public void theContactIsValid() {
-        Contact contact = new Contact();
-        contact.setName("XiaoBai");
-        contact.setMobile("18222222222");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("XiaoBai"
+                            , "18222222222"
+                            , "66666"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
 
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(0, constraintViolations.size());
