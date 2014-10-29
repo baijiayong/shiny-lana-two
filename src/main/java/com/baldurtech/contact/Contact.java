@@ -47,7 +47,6 @@ public class Contact implements java.io.Serializable {
 
     private String memo;
     
-    @NotNull
     @NotBlank
     private String job;
     
