@@ -1,5 +1,6 @@
 package com.baldurtech.contact;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -24,8 +25,8 @@ public class ContactValidationTest {
         validator = factory.getValidator();      
     }
     
-    @Test
-    public void name_cannot_be_null() {
+    @Before
+    public void createValidContact() {
         contact = new Contact();
         contact.setName("Shihang");
         contact.setMobile("18235100872");
@@ -36,7 +37,10 @@ public class ContactValidationTest {
         contact.setMemo("memo");
         contact.setJob("HR");
         contact.setJobLevel(9L);
-        
+    }
+    
+    @Test
+    public void name_cannot_be_null() {     
         contact.setName(null);
         
         constraintViolations = validator.validate(contact);
