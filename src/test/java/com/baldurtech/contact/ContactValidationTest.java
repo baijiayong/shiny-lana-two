@@ -417,5 +417,22 @@ public class ContactValidationTest {
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
     }
+        
+    @Test
+    public void theContactIsValid() {
+        Contact contact = new Contact();
+        contact.setName("XiaoBai");
+        contact.setMobile("18222222222");
+        contact.setVpmn("62222");
+        contact.setEmail("a@a.com");
+        contact.setHomeAddress("TaiYuan");
+        contact.setOfficeAddress("BeiZhang");
+        contact.setJob("HR");
+        contact.setJobLevel(9L);
+        contact.setMemo("memo");
+
+        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        assertEquals(0, constraintViolations.size());
+    }
 }
 
