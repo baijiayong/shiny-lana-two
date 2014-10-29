@@ -52,7 +52,31 @@ public class Contact implements java.io.Serializable {
     
     @NotNull
     private Long jobLevel;
+    
+    public Contact() {
+        
+    }
 
+    public Contact(String name
+                 , String mobile
+                 , String vpmn
+                 , String email
+                 , String homeAddress
+                 , String officeAddress
+                 , String memo
+                 , String job
+                 , Long jobLevel) {
+        this.name = name;
+        this.mobile = mobile;
+        this.email = email;
+        this.vpmn = vpmn;
+        this.homeAddress = homeAddress;
+        this.officeAddress = officeAddress;
+        this.memo = memo;
+        this.job = job;
+        this.jobLevel = jobLevel;
+    }
+    
     public void setId(Long id)
     {
         this.id = id;
