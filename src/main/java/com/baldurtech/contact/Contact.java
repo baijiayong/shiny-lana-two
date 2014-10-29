@@ -42,7 +42,6 @@ public class Contact implements java.io.Serializable {
     @NotBlank
     private String homeAddress;
 
-    @NotNull
     @NotBlank
     private String officeAddress;
 
