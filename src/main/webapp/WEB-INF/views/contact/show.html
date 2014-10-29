@@ -17,58 +17,47 @@
         <h1 align="center">Show</h1>           
             
             <table align="center" border="1">  
-                <form method="POST" th:action="@{'update'}">
-                    <tr>
-                        <td>Name</td>
-                        <td><input type="text" name="name" th:value="${contact.name}"/></td>
-                    </tr>
-                    <tr>
-                        <td>Mobile</td>
-                        <td><input type="text" name="mobile" th:value="${contact.mobile}"/></td>
-                    </tr>
-                    <tr>
-                        <td>Vpmn</td>
-                        <td><input type="text" name="vpmn" th:value="${contact.vpmn}"/></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><input type="text" name="email" th:value="${contact.email}"/></td>
-                    </tr>
-                    <tr>
-                        <td>HomeAddress</td>
-                        <td><input type="text" name="homeAddress" th:value="${contact.homeAddress}"/></td>
-                    </tr>
-                    <tr>
-                        <td>OfficeAddress</td>
-                        <td><input type="text" name="officeAddress" th:value="${contact.officeAddress}"/></td>
-                    </tr>
-                    <tr>
-                        <td>Memo</td>
-                        <td><input type="text" name="memo" th:value="${contact.memo}"/></td>
-                    </tr>
-                    <tr>
-                        <td>Job</td>
-                        <td><input type="text" name="job" th:value="${contact.job}"/></td>
-                    </tr>
-                    <tr>
-                        <td>JobLevel</td>
-                        <td><input type="text" name="jobLevel" th:value="${contact.jobLevel}"/></td>
-                    </tr>                    
-                    <tr align="center">
-                        <td colspan="2">
-                            <input type="submit" name="action" th:value="update"/>
-                            <input type="hidden" th:name="id" th:value="${contact.id}"/>
-                        </td>
-                    </tr>                
-            </form>
-                <form th:action="@{'delete'}" method="POST">
-                    <tr align="center">
-                        <td colspan="2">
-                            <input type="submit" name="action" th:value="delete"/>
-                            <input type="hidden" th:name="id" th:value="${contact.id}"/>
-                        </td>                        
-                    </tr>               
-                </form>            
+                <tr>
+                    <td>Name</td>
+                    <td th:text="${contact.name}"></td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td th:text="${contact.mobile}"></td>
+                </tr>
+                <tr>
+                    <td>Vpmn</td>
+                    <td th:text="${contact.vpmn}"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td th:text="${contact.email}"></td>
+                </tr>
+                <tr>
+                    <td>HomeAddress</td>
+                    <td th:text="${contact.homeAddress}"></td>
+                </tr>
+                <tr>
+                    <td>OfficeAddress</td>
+                    <td th:text="${contact.officeAddress}"></td>
+                </tr>
+                <tr>
+                    <td>Memo</td>
+                    <td th:text="${contact.memo}"></td>
+                </tr>
+                <tr>
+                    <td>Job</td>
+                    <td th:text="${contact.job}"></td>
+                </tr>
+                <tr>
+                    <td>JobLevel</td>
+                    <td th:text="${contact.jobLevel}"></td>
+                </tr>     
+                <tr align="center">
+                    <td colspan="2">
+                        <a th:href="@{'update'}" th:text="update"></a>
+                    </td>
+                </tr>
                 <tr align="center">
                     <td colspan="2">
                         <a th:href="@{'list'}" th:text="return"></a>
