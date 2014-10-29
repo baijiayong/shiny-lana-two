@@ -59,6 +59,13 @@ public class ContactController {
         
     }
     
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String update(@RequestParam(value="id", required=true) String id, Model model) {
+        model.addAttribute("contact", contactService.show(Long.valueOf(id)));
+        return "contact/update";
+        
+    }
+    
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("contact") Contact contact) {
         contactService.update(contact);
