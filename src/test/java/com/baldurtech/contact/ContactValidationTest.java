@@ -41,16 +41,15 @@ public class ContactValidationTest {
     
     @Test
     public void nameIsBlank() {
-        Contact contact = new Contact();
-        contact.setName("     ");
-        contact.setMobile("18235100872");
-        contact.setVpmn("62222");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
+        Contact contact = new Contact("    "
+                                    , "18235100872"
+                                    , "62222"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
