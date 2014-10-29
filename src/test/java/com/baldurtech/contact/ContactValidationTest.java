@@ -253,7 +253,7 @@ public class ContactValidationTest {
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+        assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
     }
     
     @Test
@@ -270,7 +270,7 @@ public class ContactValidationTest {
         contact.setMemo("memo");
         
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
-        assertEquals(2, constraintViolations.size());
+        assertEquals(1, constraintViolations.size());
         assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
     }
     
@@ -291,5 +291,6 @@ public class ContactValidationTest {
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
     }
+  
 }
 

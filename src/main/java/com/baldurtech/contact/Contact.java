@@ -35,11 +35,10 @@ public class Contact implements java.io.Serializable {
     @Pattern(regexp="\\d{4,6}", message="elements must be digits and must between 4 to 6")
     private String vpmn;
     
-    @NotBlank
+    @NotBlank(message = "not a valid email format")
     @Email(message = "not a valid email format")
     private String email;
     
-    @NotNull
     @NotBlank
     private String homeAddress;
 
