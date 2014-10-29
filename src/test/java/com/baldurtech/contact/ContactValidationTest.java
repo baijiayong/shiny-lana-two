@@ -27,14 +27,14 @@ public class ContactValidationTest {
     @Test
     public void nameIsNull() {
         contact = new Contact(null
-                                    , "18235100872"
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "18235100872"
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals( 1, constraintViolations.size());
@@ -44,14 +44,14 @@ public class ContactValidationTest {
     @Test
     public void nameIsBlank() {
         contact = new Contact("    "
-                                    , "18235100872"
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "18235100872"
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -61,14 +61,14 @@ public class ContactValidationTest {
     @Test
     public void MobileIsNull() {
         contact = new Contact("XiaoBai"
-                                    , null
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , null
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -78,14 +78,14 @@ public class ContactValidationTest {
     @Test
     public void MobileIsBlank() {
         contact = new Contact("XiaoBai"
-                                    , "    "
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "    "
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -95,14 +95,14 @@ public class ContactValidationTest {
     @Test
     public void MobileIsNotDigits() {
         contact = new Contact("XiaoBai"
-                                    , "abcdefghijk"
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "abcdefghijk"
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
                                     
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -112,14 +112,14 @@ public class ContactValidationTest {
     @Test
     public void mobileIsTooShot() {
         contact = new Contact("XiaoBai"
-                                    , "182"
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "182"
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -129,14 +129,14 @@ public class ContactValidationTest {
     @Test
     public void mobileIsTooLong() {
         contact = new Contact("XiaoBai"
-                                    , "182222222222"
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "182222222222"
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -146,14 +146,14 @@ public class ContactValidationTest {
     @Test
     public void mobileIsNotStartWithOne() {
         contact = new Contact("XiaoBai"
-                                    , "22222222222"
-                                    , "62222"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "22222222222"
+                            , "62222"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -163,15 +163,15 @@ public class ContactValidationTest {
     @Test
     public void vpmnIsNull() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , null
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
-        
+                            , "18222222222"
+                            , null
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
+
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
@@ -180,15 +180,15 @@ public class ContactValidationTest {
     @Test
     public void vpmnIsBlank() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , "   "
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
-        
+                            , "18222222222"
+                            , "   "
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
+
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
@@ -197,14 +197,14 @@ public class ContactValidationTest {
     @Test
     public void vpmnIsTooShot() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , "6"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "18222222222"
+                            , "6"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -214,14 +214,14 @@ public class ContactValidationTest {
     @Test
     public void vpmnIsTooLong() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , "6666666"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "18222222222"
+                            , "6666666"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -231,14 +231,14 @@ public class ContactValidationTest {
     @Test
     public void vpmnIsNotDigit() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , "abcde"
-                                    , "a@a.com"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "18222222222"
+                            , "abcde"
+                            , "a@a.com"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -248,15 +248,15 @@ public class ContactValidationTest {
     @Test
     public void emailIsNull() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , "66666"
-                                    , null
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
-        
+                            , "18222222222"
+                            , "66666"
+                            , null
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
+
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
@@ -265,14 +265,14 @@ public class ContactValidationTest {
     @Test
     public void emailIsBlank() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , "66666"
-                                    , "    "
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "18222222222"
+                            , "66666"
+                            , "    "
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
@@ -282,14 +282,14 @@ public class ContactValidationTest {
     @Test
     public void emailIsNotValidFormat() {
         contact = new Contact("XiaoBai"
-                                    , "18222222222"
-                                    , "66666"
-                                    , "sdfsf"
-                                    , "TaiYuan"
-                                    , "BeiZhang"
-                                    , "memo"
-                                    , "HR"
-                                    , 9L);
+                            , "18222222222"
+                            , "66666"
+                            , "sdfsf"
+                            , "TaiYuan"
+                            , "BeiZhang"
+                            , "memo"
+                            , "HR"
+                            , 9L);
         
         constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
