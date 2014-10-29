@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.ui.Model;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.validation.BindingResult;
@@ -16,14 +18,18 @@ import org.springframework.validation.BindingResult;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.baldurtech.account.*;
+
 @Controller
 @RequestMapping("contact")
 public class ContactController {
     ContactService contactService;
+    AccountRepository accountRepository;
     
     @Autowired
-    public ContactController(ContactService contactService) {
+    public ContactController(ContactService contactService, AccountRepository accountRepository) {
         this.contactService = contactService;
+        this.accountRepository = accountRepository;
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -60,21 +66,25 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String update(@RequestParam(value="id", required=true) String id, Model model) {
-        model.addAttribute("contact", contactService.show(Long.valueOf(id)));
+    public String update(@RequestParam(value="id", required=true) String id, Model model, Principal principal) {
+        Account account = accountRepository.findByEmail(principal.getName());
+        if(account.getRole() != "ROLE_USER") {
+            return "redirect:list";
+        }
         return "contact/update";
         
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("contact") Contact contact, Model model) {
-        contactService.update(contact);
-        model.addAttribute("id", contact.getId());
-        return "redirect:show";
+            contactService.update(contact);
+            model.addAttribute("id", contact.getId());
+            return "redirect:show";
     }
     
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String delete(@RequestParam("id") String id) {       
+    public String delete(@RequestParam("id") String id) {    
+        
         contactService.delete(Long.valueOf(id));
         return "redirect:list";
     }
