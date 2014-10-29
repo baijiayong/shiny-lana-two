@@ -16,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class ContactValidationTest {
     private static Validator validator;
     private Contact contact;
+    private Set<ConstraintViolation<Contact>> constraintViolations;
     
     @BeforeClass
     public static void setup() {
@@ -35,7 +36,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals( 1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -52,7 +53,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -69,7 +70,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
     }
@@ -86,7 +87,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
     }
@@ -103,7 +104,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
                                     
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
     }
@@ -120,7 +121,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
     }
@@ -137,7 +138,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
     }
@@ -154,7 +155,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
     }
@@ -171,7 +172,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
     }
@@ -188,7 +189,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
     }
@@ -205,7 +206,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
     }
@@ -222,7 +223,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
     }
@@ -239,7 +240,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
     }
@@ -256,7 +257,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
     }
@@ -273,7 +274,7 @@ public class ContactValidationTest {
                                     , "HR"
                                     , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
     }
@@ -290,7 +291,7 @@ public class ContactValidationTest {
                             , "HR"
                             , 9L);
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -306,7 +307,7 @@ public class ContactValidationTest {
                             , "memo"
                             , "HR"
                             , 9L);
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -323,7 +324,7 @@ public class ContactValidationTest {
                             , "HR"
                             , 9L);
 
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -340,7 +341,7 @@ public class ContactValidationTest {
                             , "HR"
                             , 9L);
 
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -356,7 +357,7 @@ public class ContactValidationTest {
                             , "memo"
                             , null
                             , 9L);
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -373,7 +374,7 @@ public class ContactValidationTest {
                             , "     "
                             , 9L);
 
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
@@ -390,7 +391,7 @@ public class ContactValidationTest {
                             , "HR"
                             , null);
 
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
     }
@@ -407,7 +408,7 @@ public class ContactValidationTest {
                             , "HR"
                             , 9L);
 
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(0, constraintViolations.size());
     }
 }
