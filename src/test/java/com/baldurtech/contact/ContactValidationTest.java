@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ContactValidationTest {
     private static Validator validator;
+    private Contact contact;
     
     @BeforeClass
     public static void setup() {
@@ -24,7 +25,7 @@ public class ContactValidationTest {
     
     @Test
     public void nameIsNull() {
-        Contact contact = new Contact(null
+        contact = new Contact(null
                                     , "18235100872"
                                     , "62222"
                                     , "a@a.com"
@@ -41,7 +42,7 @@ public class ContactValidationTest {
     
     @Test
     public void nameIsBlank() {
-        Contact contact = new Contact("    "
+        contact = new Contact("    "
                                     , "18235100872"
                                     , "62222"
                                     , "a@a.com"
@@ -58,7 +59,7 @@ public class ContactValidationTest {
     
     @Test
     public void MobileIsNull() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , null
                                     , "62222"
                                     , "a@a.com"
@@ -75,7 +76,7 @@ public class ContactValidationTest {
     
     @Test
     public void MobileIsBlank() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "    "
                                     , "62222"
                                     , "a@a.com"
@@ -92,7 +93,7 @@ public class ContactValidationTest {
     
     @Test
     public void MobileIsNotDigits() {
-       Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "abcdefghijk"
                                     , "62222"
                                     , "a@a.com"
@@ -109,7 +110,7 @@ public class ContactValidationTest {
     
     @Test
     public void mobileIsTooShot() {
-       Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "182"
                                     , "62222"
                                     , "a@a.com"
@@ -126,7 +127,7 @@ public class ContactValidationTest {
     
     @Test
     public void mobileIsNotStartWithOne() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "22222222222"
                                     , "62222"
                                     , "a@a.com"
@@ -143,7 +144,7 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsNull() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , null
                                     , "a@a.com"
@@ -160,7 +161,7 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsBlank() {
-       Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , "   "
                                     , "a@a.com"
@@ -177,7 +178,7 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsTooShot() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , "6"
                                     , "a@a.com"
@@ -194,7 +195,7 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsTooLong() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , "6666666"
                                     , "a@a.com"
@@ -211,7 +212,7 @@ public class ContactValidationTest {
     
     @Test
     public void vpmnIsNotDigit() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , "abcde"
                                     , "a@a.com"
@@ -228,7 +229,7 @@ public class ContactValidationTest {
     
     @Test
     public void emailIsNull() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , "66666"
                                     , null
@@ -245,7 +246,7 @@ public class ContactValidationTest {
     
     @Test
     public void emailIsBlank() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , "66666"
                                     , "    "
@@ -262,7 +263,7 @@ public class ContactValidationTest {
     
     @Test
     public void emailIsNotValidFormat() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                                     , "18222222222"
                                     , "66666"
                                     , "sdfsf"
@@ -279,7 +280,7 @@ public class ContactValidationTest {
     
     @Test
     public void homeAddressIsNull() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
@@ -296,7 +297,7 @@ public class ContactValidationTest {
     
     @Test
     public void homeAddressIsBlank() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
@@ -312,7 +313,7 @@ public class ContactValidationTest {
     
     @Test
     public void officeAddressIsNull() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
@@ -329,7 +330,7 @@ public class ContactValidationTest {
     
     @Test
     public void officeAddressIsBlank() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
@@ -346,7 +347,7 @@ public class ContactValidationTest {
         
     @Test
     public void jobIsNull() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
@@ -362,7 +363,7 @@ public class ContactValidationTest {
         
     @Test
     public void jobIsBlank() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
@@ -379,7 +380,7 @@ public class ContactValidationTest {
         
     @Test
     public void jobLevelIsNull() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
@@ -396,7 +397,7 @@ public class ContactValidationTest {
         
     @Test
     public void theContactIsValid() {
-        Contact contact = new Contact("XiaoBai"
+        contact = new Contact("XiaoBai"
                             , "18222222222"
                             , "66666"
                             , "a@a.com"
