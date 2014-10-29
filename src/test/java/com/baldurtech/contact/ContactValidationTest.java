@@ -52,389 +52,139 @@ public class ContactValidationTest {
     }
     
     @Test
-    public void nameIsBlank() {
-        contact = new Contact("    "
-                            , "18235100872"
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    public void name_cannot_be_blank() {
+        contact.setName("       ");
+        assertConstraintViolations("不能为空");       
     }
     
     @Test
-    public void MobileIsNull() {
-        contact = new Contact("XiaoBai"
-                            , null
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
+    public void Mobile_cannot_be_null() {
+        contact.setMobile(null);
+        assertConstraintViolations("不能为null");    
     }
     
     @Test
-    public void MobileIsBlank() {
-        contact = new Contact("XiaoBai"
-                            , "    "
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
+    public void Mobile_cannot_be_blank() {
+        contact.setMobile("     ");
+        assertConstraintViolations("not a valid mobile format");    
     }
     
     @Test
-    public void MobileIsNotDigits() {
-        contact = new Contact("XiaoBai"
-                            , "abcdefghijk"
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-                                    
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
+    public void Mobile_can_be_digits() {
+        contact.setMobile("abcdefghijk");
+        assertConstraintViolations("not a valid mobile format");    
     }
     
     @Test
-    public void mobileIsTooShot() {
-        contact = new Contact("XiaoBai"
-                            , "182"
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
+    public void mobile_cannot_be_too_short() {
+        contact.setMobile("123");
+        assertConstraintViolations("not a valid mobile format");    
     }
     
     @Test
-    public void mobileIsTooLong() {
-        contact = new Contact("XiaoBai"
-                            , "182222222222"
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
+    public void mobile_cannot_be_too_long() {
+       contact.setMobile("182351008722");
+        assertConstraintViolations("not a valid mobile format");    
     }
     
     @Test
-    public void mobileIsNotStartWithOne() {
-        contact = new Contact("XiaoBai"
-                            , "22222222222"
-                            , "62222"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
+    public void mobile_can_be_start_with_one() {
+        contact.setMobile("28235100872");
+        assertConstraintViolations("not a valid mobile format");    
     }
     
     @Test
-    public void vpmnIsNull() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , null
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
+    public void vpmn_cannot_be_null() {
+        contact.setVpmn(null);
+        assertConstraintViolations("不能为null");           
     }
     
     @Test
-    public void vpmnIsBlank() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "   "
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
+    public void vpmn_cannot_be_blank() {
+        contact.setVpmn("    ");
+        assertConstraintViolations("elements must be digits and must between 4 to 6");           
     }
     
     @Test
-    public void vpmnIsTooShot() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "6"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
+    public void vpmn_cannot_be_too_short() {
+        contact.setVpmn("5");
+        assertConstraintViolations("elements must be digits and must between 4 to 6");  
     }
     
     @Test
-    public void vpmnIsTooLong() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "6666666"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
+    public void vpmn_cannot_be_too_long() {
+        contact.setVpmn("1234567899");
+        assertConstraintViolations("elements must be digits and must between 4 to 6");  
     }
     
     @Test
-    public void vpmnIsNotDigit() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "abcde"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("elements must be digits and must between 4 to 6", constraintViolations.iterator().next().getMessage());
+    public void vpmn_can_be_digits() {
+        contact.setVpmn("abcd");
+        assertConstraintViolations("elements must be digits and must between 4 to 6");  
     }
     
     @Test
-    public void emailIsNull() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , null
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
+    public void email_cannot_be_null() {
+        contact.setEmail(null);
+        assertConstraintViolations("not a valid email format");  
     }
     
     @Test
-    public void emailIsBlank() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "    "
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
+    public void email_cannot_be_blank() {
+        contact.setEmail("    ");
+        assertConstraintViolations("not a valid email format");  
     }
     
     @Test
-    public void emailIsNotValidFormat() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "sdfsf"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
+    public void email_can_be_valid_format() {
+        contact.setEmail("22dd");
+        assertConstraintViolations("not a valid email format");  
     }
     
     @Test
-    public void homeAddressIsNull() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , null
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    public void homeAddress_cannot_be_null() {
+        contact.setHomeAddress(null);
+        assertConstraintViolations("不能为空"); 
     }
     
     @Test
-    public void homeAddressIsBlank() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , "   "
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    public void homeAddress_cannot_be_blank() {
+        contact.setHomeAddress("    ");
+        assertConstraintViolations("不能为空");  
     }
     
     @Test
-    public void officeAddressIsNull() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , null
-                            , "memo"
-                            , "HR"
-                            , 9L);
-
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    public void officeAddress_cannot_be_null() {
+        contact.setOfficeAddress(null);
+        assertConstraintViolations("不能为空");  
     }
     
     @Test
-    public void officeAddressIsBlank() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "    "
-                            , "memo"
-                            , "HR"
-                            , 9L);
-
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    public void officeAddress_cannot_be_blank() {
+        contact.setOfficeAddress("     ");
+        assertConstraintViolations("不能为空");  
     }
         
     @Test
-    public void jobIsNull() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , null
-                            , 9L);
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    public void job_cannot_be_null() {
+        contact.setJob(null);
+        assertConstraintViolations("不能为空");  
     }
         
     @Test
-    public void jobIsBlank() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "     "
-                            , 9L);
-
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    public void job_cannot_be_blank() {
+        contact.setJob("            ");
+        assertConstraintViolations("不能为空");  
     }
         
     @Test
-    public void jobLevelIsNull() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , null);
-
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为null", constraintViolations.iterator().next().getMessage());
+    public void jobLevel_cannot_be_null() {
+        contact.setJobLevel(null);
+        assertConstraintViolations("不能为null");  
     }
         
     @Test
     public void theContactIsValid() {
-        contact = new Contact("XiaoBai"
-                            , "18222222222"
-                            , "66666"
-                            , "a@a.com"
-                            , "TaiYuan"
-                            , "BeiZhang"
-                            , "memo"
-                            , "HR"
-                            , 9L);
-
         constraintViolations = validator.validate(contact);
         assertEquals(0, constraintViolations.size());
     }
