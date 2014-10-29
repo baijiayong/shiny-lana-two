@@ -127,6 +127,23 @@ public class ContactValidationTest {
     }
     
     @Test
+    public void mobileIsTooLong() {
+        contact = new Contact("XiaoBai"
+                                    , "182222222222"
+                                    , "62222"
+                                    , "a@a.com"
+                                    , "TaiYuan"
+                                    , "BeiZhang"
+                                    , "memo"
+                                    , "HR"
+                                    , 9L);
+        
+        constraintViolations = validator.validate(contact);
+        assertEquals(1, constraintViolations.size());
+        assertEquals("not a valid mobile format", constraintViolations.iterator().next().getMessage());
+    }
+    
+    @Test
     public void mobileIsNotStartWithOne() {
         contact = new Contact("XiaoBai"
                                     , "22222222222"
