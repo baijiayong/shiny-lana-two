@@ -39,13 +39,16 @@ public class ContactValidationTest {
         contact.setJobLevel(9L);
     }
     
+    private void assertConstraintViolations(String errorMessage) {
+        constraintViolations = validator.validate(contact);
+        assertEquals( 1, constraintViolations.size());
+        assertEquals(errorMessage, constraintViolations.iterator().next().getMessage());
+    }
+    
     @Test
     public void name_cannot_be_null() {     
         contact.setName(null);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals( 1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+        assertConstraintViolations("不能为空");       
     }
     
     @Test
