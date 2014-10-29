@@ -239,7 +239,7 @@ public class ContactValidationTest {
     }
     
     @Test
-    public void emailIsNotNull() {
+    public void emailIsNull() {
         Contact contact = new Contact();
         contact.setName("XiaoBai");
         contact.setMobile("18222222222");
@@ -254,6 +254,24 @@ public class ContactValidationTest {
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+    }
+    
+    @Test
+    public void emailIsBlank() {
+        Contact contact = new Contact();
+        contact.setName("XiaoBai");
+        contact.setMobile("18222222222");
+        contact.setVpmn("62222");
+        contact.setEmail("     ");
+        contact.setHomeAddress("TaiYuan");
+        contact.setOfficeAddress("BeiZhang");
+        contact.setJob("HR");
+        contact.setJobLevel(9L);
+        contact.setMemo("memo");
+        
+        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        assertEquals(2, constraintViolations.size());
+        assertEquals("not a valid email format", constraintViolations.iterator().next().getMessage());
     }
 }
 
