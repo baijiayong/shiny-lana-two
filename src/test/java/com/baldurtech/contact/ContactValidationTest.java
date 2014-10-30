@@ -14,6 +14,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ContactValidationTest {
     private static Validator validator;
+    private Contact contact;
+    private Set<ConstraintViolation<Contact>> constraintViolations;
     
     @BeforeClass
     public static void setup() {
@@ -23,7 +25,7 @@ public class ContactValidationTest {
     
     @Test
     public void name_cannot_be_null() {
-        Contact contact = new Contact();
+        contact = new Contact();
         contact.setName(null);
         contact.setMobile("18222222222");
         contact.setVpmn("6222");
@@ -34,14 +36,14 @@ public class ContactValidationTest {
         contact.setJobLevel(6L);
         contact.setMemo("memo");
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
     
     @Test
     public void name_cannot_be_Blank() {
-        Contact contact = new Contact();
+        contact = new Contact();
         contact.setName("       ");
         contact.setMobile("18222222222");
         contact.setVpmn("6222");
@@ -52,7 +54,7 @@ public class ContactValidationTest {
         contact.setJobLevel(6L);
         contact.setMemo("memo");
         
-        Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
+        constraintViolations = validator.validate(contact);
         assertEquals(1, constraintViolations.size());
         assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
     }
