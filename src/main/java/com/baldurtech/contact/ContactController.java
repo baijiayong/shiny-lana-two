@@ -29,18 +29,23 @@ public class ContactController {
     
     @RequestMapping(value="/show", method = RequestMethod.GET)
     public String show(@RequestParam(value = "id", required = true) String id, Model model) {
-        Contact contact = new Contact();
-        contact.setName("ShiHang");
-        contact.setMobile("15235432994");
-        contact.setEmail("ShiHang@qq.com");
-        contact.setVpmn("4333");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("TaiYuan");
-        contact.setJob("HR");
-        contact.setJobLevel(333L);
-        contact.setMemo("memo");
-        
-        model.addAttribute("contact", contact);
+              
+        model.addAttribute("contact", getById(Long.valueOf(id)));
         return "contact/show";
     }
+    
+    public Contact getById(Long id) {
+            Contact contact = new Contact();
+            contact.setName("ShiHang");
+            contact.setMobile("15235432994");
+            contact.setEmail("ShiHang@qq.com");
+            contact.setVpmn("4333");
+            contact.setHomeAddress("TaiYuan");
+            contact.setOfficeAddress("TaiYuan");
+            contact.setJob("HR");
+            contact.setJobLevel(333L);
+            contact.setMemo("memo");
+            
+            return contact;
+        }
 }
