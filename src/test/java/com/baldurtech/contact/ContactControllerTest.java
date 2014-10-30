@@ -2,6 +2,7 @@ package com.baldurtech.contact;
 
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import org.mockito.MockitoAnnotations;
 import org.mockito.Mock;
@@ -104,10 +105,27 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
-    public void 当URL为contact_update时应该访问update页面() throws Exception{
+    public void 当URL为contact_update时应该访问update页面() throws Exception {
         mockMvc.perform(get("/contact/update")
                         .param("id", String.valueOf(CONTACT_ID)))
                .andExpect(view().name("contact/update"))
                .andExpect(model().attributeExists("contact"));
+    }
+    
+    @Test
+    public void 当点击update页面的update时应该重定向到show页面() throws Exception {
+        mockMvc.perform(post("/contact/update")
+                        .param("id", String.valueOf(CONTACT_ID))
+                        .param("name", String.valueOf(contact.getName()))
+                        .param("mobile", String.valueOf(contact.getMobile()))
+                        .param("vpmn", String.valueOf(contact.getVpmn()))
+                        .param("email", String.valueOf(contact.getEmail()))
+                        .param("homeAddress", String.valueOf(contact.getHomeAddress()))
+                        .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
+                        .param("job", String.valueOf(contact.getJob()))
+                        .param("jobLevel", String.valueOf(contact.getJobLevel()))
+                        .param("memo", String.valueOf(contact.getMemo())))
+               .andExpect(redirectedUrl("show?id=" + CONTACT_ID))
+               .andExpect(model().attributeExists("id"));
     }
 }
