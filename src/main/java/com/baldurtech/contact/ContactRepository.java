@@ -3,9 +3,11 @@ package com.baldurtech.contact;
 import java.util.List;
 import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
+@Transactional
 @Repository
 public class ContactRepository {
     @PersistenceContext
@@ -27,5 +29,10 @@ public class ContactRepository {
         } catch(PersistenceException pe) {
             return null;
         }
+    }
+    
+    @Transactional
+    public void save(Contact contact) {
+        entityManager.persist(contact);
     }
 }
