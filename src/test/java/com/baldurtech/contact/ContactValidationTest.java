@@ -39,21 +39,22 @@ public class ContactValidationTest {
         contact.setMemo("memo");
     } 
     
+    public void assertConstraintViolations(String errorMessage) {
+        constraintViolations = validator.validate(contact);
+        assertEquals(1, constraintViolations.size());
+        assertEquals(errorMessage, constraintViolations.iterator().next().getMessage());
+    }
+    
     @Test
     public void name_cannot_be_null() {
         contact.setName(null);
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+        assertConstraintViolations("不能为空");
     }
+    
     
     @Test
     public void name_cannot_be_Blank() {
         contact.setName("       ");
-        
-        constraintViolations = validator.validate(contact);
-        assertEquals(1, constraintViolations.size());
-        assertEquals("不能为空", constraintViolations.iterator().next().getMessage());
+        assertConstraintViolations("不能为空");
     }
 }
