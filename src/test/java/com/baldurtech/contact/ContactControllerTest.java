@@ -136,6 +136,12 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
+    public void 在ContactController中的update方法中调用了ContactService中的update方法() {
+        contactController.update(contact, model);
+        verify(contactService).update(contact);
+    }
+    
+    @Test
     public void 但点击update页面的delete时应该重定向到list页面() throws Exception {
         mockMvc.perform(post("/contact/delete")
                         .param("id", String.valueOf(CONTACT_ID)))
