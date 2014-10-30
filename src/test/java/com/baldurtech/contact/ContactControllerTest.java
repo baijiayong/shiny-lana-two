@@ -83,7 +83,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
-    public void 当URLcontact_save是应该重定向到list页面() throws Exception {
+    public void 当URLcontact_save时应该重定向到list页面() throws Exception {
         mockMvc.perform(post("/contact/save") 
                         .param("name", String.valueOf(contact.getName()))
                         .param("mobile", String.valueOf(contact.getMobile()))
@@ -101,5 +101,12 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 在ContactController中的save方法中调ContactService中的save方法() {
         contactController.save(contact);
         verify(contactService).save(contact);
+    }
+    
+    @Test
+    public void 当URL为contact_update时应该访问update页面() throws Exception{
+        mockMvc.perform(get("/contact/update")
+                        .param("id", String.valueOf(CONTACT_ID)))
+               .andExpect(view().name("contact/update"));
     }
 }

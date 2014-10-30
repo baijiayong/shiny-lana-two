@@ -45,4 +45,9 @@ public class ContactController {
         contactService.save(contact);
         return "redirect:list";
     }
+    
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String update(@RequestParam(value = "id", required = true) String id, Model model) {
+        return "contact/update";
+    }
 }
