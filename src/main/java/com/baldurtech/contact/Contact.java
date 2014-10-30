@@ -1,4 +1,4 @@
-package com.baldurtech.contact.core.domain;
+package com.baldurtech.contact;
 
 public class Contact
 {
