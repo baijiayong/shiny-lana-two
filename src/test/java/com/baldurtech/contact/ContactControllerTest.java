@@ -89,4 +89,10 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                         .param("memo", String.valueOf(contact.getMemo())))
                .andExpect(view().name("contact/create"));
     }
+    
+    @Test
+    public void 在ContactController中的save方法中调ContactService中的save方法() {
+        contactController.save(contact);
+        verify(contactService).save(contact);
+    }
 }
