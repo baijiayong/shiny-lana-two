@@ -51,4 +51,10 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                .andExpect(view().name("contact/show"))
                .andExpect(model().attributeExists("contact"));
     }
+    
+    @Test
+    public void 在contactController中的show方法调用ContactService中的show方法() {
+        contactController.show(String.valueOf(CONTACT_ID), model);
+        verify(contactService).show(CONTACT_ID);
+    }
 }
