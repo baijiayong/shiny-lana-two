@@ -20,17 +20,12 @@ public class ContactRepository {
     }  
 
     public Contact getById(Long id) {
-        Contact contact = new Contact();
-        contact.setName("ShiHang");
-        contact.setMobile("15235432994");
-        contact.setEmail("ShiHang@qq.com");
-        contact.setVpmn("4333");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("TaiYuan");
-        contact.setJob("HR");
-        contact.setJobLevel(333L);
-        contact.setMemo("memo");
-        
-        return contact;
+        try {
+            return entityManager.createNamedQuery(Contact.GET_BY_ID, Contact.class)
+                                 .setParameter("id", id)
+                                 .getSingleResult();
+        } catch(PersistenceException pe) {
+            return null;
+        }
     }
 }
