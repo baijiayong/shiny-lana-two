@@ -17,6 +17,8 @@ import com.baldurtech.config.WebAppConfigurationAware;
 
 public class ContactControllerTest extends WebAppConfigurationAware {
     private Long CONTACT_ID = 3L;
+    private Contact contact;
+    
     @Mock
     Model model;
     
@@ -26,9 +28,24 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     @InjectMocks
     ContactController contactController;
     
+    public void initMocks() {
+        MockitoAnnotations.initMocks(this);
+    }
+    
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        initMocks();
+        
+        contact = new Contact();
+        contact.setName("ShiHang");
+        contact.setMobile("18222222222");
+        contact.setVpmn("62222");
+        contact.setEmail("a@a.com");
+        contact.setHomeAddress("TaiYuan");
+        contact.setOfficeAddress("BeiZhang");
+        contact.setJob("HR");
+        contact.setJobLevel(9L);
+        contact.setMemo("Memo");
     }
    
     @Test
@@ -60,7 +77,16 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Test
     public void 当URL为contact_create时应该访问create页面() throws Exception {
-        mockMvc.perform(get("/contact/create"))
+        mockMvc.perform(get("/contact/create")
+                        .param("name", String.valueOf(contact.getName()))
+                        .param("mobile", String.valueOf(contact.getMobile()))
+                        .param("vpmn", String.valueOf(contact.getVpmn()))
+                        .param("email", String.valueOf(contact.getEmail()))
+                        .param("homeAddress", String.valueOf(contact.getHomeAddress()))
+                        .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
+                        .param("job", String.valueOf(contact.getJob()))
+                        .param("jobLevel", String.valueOf(contact.getJobLevel()))
+                        .param("memo", String.valueOf(contact.getMemo())))
                .andExpect(view().name("contact/create"));
     }
 }
