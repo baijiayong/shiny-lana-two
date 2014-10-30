@@ -17,9 +17,15 @@ import org.springframework.ui.Model;
 
 import com.baldurtech.config.WebAppConfigurationAware;
 
+
+import org.springframework.validation.BindingResult;
+
 public class ContactControllerTest extends WebAppConfigurationAware {
     private Long CONTACT_ID = 3L;
     private Contact contact;
+    
+    @Mock
+    BindingResult result;
     
     @Mock
     Model model;
@@ -100,7 +106,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     
     @Test
     public void 在ContactController中的save方法中调ContactService中的save方法() {
-        contactController.save(contact);
+        contactController.save(contact, result);
         verify(contactService).save(contact);
     }
     

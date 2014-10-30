@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
 
 import org.springframework.ui.Model;
 
@@ -41,7 +42,7 @@ public class ContactController {
     }  
     
     @RequestMapping(value = "/save", method = RequestMethod.POST) 
-    public String save(@ModelAttribute("contact") Contact contact) {
+    public String save(@ModelAttribute("contact") Contact contact, BindingResult Resutl) {
         contactService.save(contact);
         return "redirect:list";
     }
