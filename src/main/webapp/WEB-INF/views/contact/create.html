@@ -5,5 +5,45 @@
     </head>
     <body>
         <h1 align="center">Create</h1>
+        <form th:action="@{save}" method="POST">
+            <table align="center">
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name"/></td>
+                </tr>
+                <tr>
+                    <td>Mobile:</td>
+                    <td><input type="text" name="mobile"/></td>
+                </tr>
+                <tr>
+                    <td>Vpmn:</td>
+                    <td><input type="text" name="vpmn"/></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email"/></td>
+                </tr>
+                <tr>
+                    <td>HomeAddress:</td>
+                    <td><input type="text" name="homeAddress"/></td>
+                </tr>
+                <tr>
+                    <td>OfficeAddress:</td>
+                    <td><input type="text" name="officeAddress"/></td>
+                </tr>
+                <tr>
+                    <td>Job:</td>
+                    <td><input type="text" name="job"/></td>
+                </tr>
+                <tr>
+                    <td>JobLevel:</td>
+                    <td><input type="text" name="jobLevel"/></td>
+                </tr>
+                <tr>
+                    <td>Memo:</td>
+                    <td><input type="text" name="memo"/></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
