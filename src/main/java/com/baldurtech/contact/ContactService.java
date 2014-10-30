@@ -27,7 +27,7 @@ public class ContactService {
         contactRepository.save(contact);
     }
     
-    public void update(Contact contact) {
-        
+    public Contact update(Contact contact) {
+        return contactRepository.update(contact);
     }
 }
