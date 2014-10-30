@@ -101,12 +101,12 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                         .param("job", String.valueOf(contact.getJob()))
                         .param("jobLevel", String.valueOf(contact.getJobLevel()))
                         .param("memo", String.valueOf(contact.getMemo())))
-               .andExpect(redirectedUrl("list"));
+               .andExpect(redirectedUrl("show?id=8"));
     }
     
     @Test
     public void 在ContactController中的save方法中调ContactService中的save方法() {
-        contactController.save(contact, result);
+        contactController.save(contact, result, model);
         verify(contactService).save(contact);
     }
     
