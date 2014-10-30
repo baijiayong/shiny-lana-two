@@ -23,8 +23,8 @@ public class ContactService {
         return contactRepository.getById(id);
     }
     
-    public Contact save(Contact contact) {
-        return null;
+    public void save(Contact contact) {
+        contactRepository.save(contact);
     }
     
 }
