@@ -7,9 +7,12 @@ import org.mockito.Mock;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.any;
 
 public class ContactServiceTest {
     private Long CONTACT_ID = 333L;
+    Contact contact;
+    
     @Mock
     ContactRepository contactRepository;
     
@@ -31,5 +34,11 @@ public class ContactServiceTest {
     public void 在ContactService中的show方法中调用contactRepository中的getById方法() {
         contactService.show(CONTACT_ID);
         verify(contactRepository).getById(CONTACT_ID);
+    }
+    
+    @Test
+    public void 在ContactService中的save方法中调用contactRepository中的save方法() {
+        contactService.save(any(Contact.class));
+        verify(contactRepository).save(any(Contact.class));
     }
 }
