@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import static org.mockito.Mockito.verify;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.springframework.ui.Model;
@@ -79,6 +80,21 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     public void 当URL为contact_create时应该访问create页面() throws Exception {
         mockMvc.perform(get("/contact/create"))
                .andExpect(view().name("contact/create"));
+    }
+    
+    @Test
+    public void 当URLcontact_save是应该重定向到list页面() throws Exception {
+        mockMvc.perform(post("/contact/save") 
+                        .param("name", String.valueOf(contact.getName()))
+                        .param("mobile", String.valueOf(contact.getMobile()))
+                        .param("vpmn", String.valueOf(contact.getVpmn()))
+                        .param("email", String.valueOf(contact.getEmail()))
+                        .param("homeAddress", String.valueOf(contact.getHomeAddress()))
+                        .param("officeAddress", String.valueOf(contact.getOfficeAddress()))
+                        .param("job", String.valueOf(contact.getJob()))
+                        .param("jobLevel", String.valueOf(contact.getJobLevel()))
+                        .param("memo", String.valueOf(contact.getMemo())))
+               .andExpect(redirectedUrl("list"));
     }
     
     @Test
