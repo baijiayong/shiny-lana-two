@@ -53,8 +53,14 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
-    public void 在contactController中的show方法调用ContactService中的show方法() {
+    public void 在ContactController中的show方法调用ContactService中的show方法() {
         contactController.show(String.valueOf(CONTACT_ID), model);
         verify(contactService).show(CONTACT_ID);
+    }
+    
+    @Test
+    public void 当URL为contact_create时应该访问create页面() throws Exception {
+        mockMvc.perform(get("/contact/create"))
+               .andExpect(view().name("contact/create"));
     }
 }

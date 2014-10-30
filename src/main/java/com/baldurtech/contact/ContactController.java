@@ -34,5 +34,8 @@ public class ContactController {
         return "contact/show";
     }
     
-    
+    @RequestMapping(value = "/create", method = RequestMethod.GET) 
+    public String create() {
+        return "contact/create";
+    }  
 }
