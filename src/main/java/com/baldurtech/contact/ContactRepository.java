@@ -43,6 +43,7 @@ public class ContactRepository {
     
     @Transactional
     public void delete(Long id) {
-       
+        Contact contact = entityManager.find(Contact.class, id);
+        entityManager.remove(contact);
     }
 }

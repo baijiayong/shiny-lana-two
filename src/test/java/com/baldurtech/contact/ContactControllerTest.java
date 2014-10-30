@@ -104,6 +104,7 @@ public class ContactControllerTest extends WebAppConfigurationAware {
         verify(contactService).save(contact);
     }
     
+    @Ignore
     @Test
     public void 当URL为contact_update时应该访问update页面() throws Exception {
         mockMvc.perform(get("/contact/update")
