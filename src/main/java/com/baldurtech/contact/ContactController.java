@@ -48,17 +48,7 @@ public class ContactController {
     
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(@RequestParam(value = "id", required = true) String id, Model model) {
-        Contact contact = new Contact();
-        contact.setName("Xiao Bai");
-        contact.setMobile("18212345678");
-        contact.setVpmn("63333");
-        contact.setEmail("a@a.com");
-        contact.setHomeAddress("TaiYuan");
-        contact.setOfficeAddress("BeiZhang");
-        contact.setJob("HR");
-        contact.setJobLevel(9L);
-        contact.setMemo("memo");
-        model.addAttribute("contact", contact);
+        model.addAttribute("contact", contactService.show(Long.valueOf(id)));
         return "contact/update";
     }
 }
