@@ -113,6 +113,12 @@ public class ContactControllerTest extends WebAppConfigurationAware {
     }
     
     @Test
+    public void 在ContactController中的update方法中调用了ContactService中的show方法 () {
+        contactController.update(String.valueOf(CONTACT_ID), model);
+        verify(contactService).show(CONTACT_ID);
+    }
+    
+    @Test
     public void 当点击update页面的update时应该重定向到show页面() throws Exception {
         mockMvc.perform(post("/contact/update")
                         .param("id", String.valueOf(CONTACT_ID))
