@@ -135,4 +135,10 @@ public class ContactControllerTest extends WebAppConfigurationAware {
                         .param("id", String.valueOf(CONTACT_ID)))
                .andExpect(redirectedUrl("list"));
     }
+    
+    @Test
+    public void 在contactController的delete中调用了contactService中的delete方法() {
+        contactController.delete(String.valueOf(CONTACT_ID));
+        verify(contactService).delete(CONTACT_ID);
+    }
 }
