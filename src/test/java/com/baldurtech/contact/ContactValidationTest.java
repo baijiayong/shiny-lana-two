@@ -167,7 +167,13 @@ public class ContactValidationTest {
     
     @Test
     public void job_cannot_be_null() {
-        contact.setJob(null);
+        contact.setJob(null );
+        assertConstraintViolations("不能为空");
+    }
+    
+    @Test
+    public void job_cannot_be_blank() {
+        contact.setJob("    ");
         assertConstraintViolations("不能为空");
     }
 }
