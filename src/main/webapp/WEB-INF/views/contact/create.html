@@ -14,51 +14,54 @@
                 <table align="center">
                     <tr>
                         <td>Name:</td>
-                        <td><input type="text" th:field="*{name}" th:value="ShiHang"/></td>
+                        <td><input type="text" th:field="*{name}"/></td>
                         <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
                     </tr>
                     <tr>
                         <td>Mobile:</td>
-                        <td><input type="text" th:field="*{mobile}" value="18212345678"/></td>
+                        <td><input type="text" th:field="*{mobile}"/></td>
                         <td th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Name Error</td>
                     </tr>
                     <tr>
                         <td>Vpmn:</td>
-                        <td><input type="text" th:field="*{vpmn}" value="62222"/></td>
+                        <td><input type="text" th:field="*{vpmn}"/></td>
                         <td th:if="${#fields.hasErrors('vpmn')}" th:errors="*{vpmn}">Name Error</td>
                     </tr>
                     <tr>
                         <td>Email:</td>
-                        <td><input type="text" th:field="*{email}" value="shihang@qq.com"/></td>
+                        <td><input type="text" th:field="*{email}"/></td>
                         <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</td>
                     </tr>
                     <tr>
                         <td>HomeAddress:</td>
-                        <td><input type="text" th:field="*{homeAddress}" value="TaiYuan"/></td>
+                        <td><input type="text" th:field="*{homeAddress}"/></td>
                         <td th:if="${#fields.hasErrors('homeAddress')}" th:errors="*{homeAddress}">Name Error</td>
                     </tr>
                     <tr>
                         <td>OfficeAddress:</td>
-                        <td><input type="text" th:field="*{officeAddress}" value="BeiZhang"/></td>
+                        <td><input type="text" th:field="*{officeAddress}"/></td>
                         <td th:if="${#fields.hasErrors('officeAddress')}" th:errors="*{officeAddress}">Name Error</td>
                     </tr>
                     <tr>
                         <td>Job:</td>
-                        <td><input type="text" th:field="*{job}" value="HR"/></td>
+                        <td><input type="text" th:field="*{job}"/></td>
                         <td th:if="${#fields.hasErrors('job')}" th:errors="*{job}">Name Error</td>
                     </tr>
                     <tr>
                         <td>JobLevel:</td>
-                        <td><input type="text" th:field="*{jobLevel}" value="9"/></td>
+                        <td><input type="text" th:field="*{jobLevel}"/></td>
                         <td th:if="${#fields.hasErrors('jobLevel')}" th:errors="*{jobLevel}">Name Error</td>
                     </tr>
                     <tr>
                         <td>Memo:</td>
-                        <td><input type="text" th:field="*{memo}" value="memo"/></td>
+                        <td><input type="text" th:field="*{memo}"/></td>
                         <td th:if="${#fields.hasErrors('memo')}" th:errors="*{memo}">Name Error</td>
                     </tr>
                     <tr>
                         <td align="center" colspan="2"><input type="submit" name="action" value="Submit"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><button><a th:href="@{list}" th:text="Return"></a></button></td>
                     </tr>
                 </table>
             </form>
