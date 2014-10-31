@@ -24,7 +24,7 @@ public class Contact
     private String name;
     
     @NotNull
-    @Pattern(regexp="\\b1\\d{10}", message="not valid mobile format!")
+    @Pattern(regexp="\\b1\\d{10}", message="not a valid mobile format!")
     private String mobile;
     private String vpmn;
     private String email;
