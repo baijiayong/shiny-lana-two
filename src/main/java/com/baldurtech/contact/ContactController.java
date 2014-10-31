@@ -37,13 +37,20 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.GET) 
-    public String create() {
+    public String create(Model model) {
+        model.addAttribute("contact", new Contact());
         return "contact/create";
     }  
     
     @RequestMapping(value = "/save", method = RequestMethod.POST) 
-    public String save(@ModelAttribute("contact") Contact contact, BindingResult Resutl, Model model) {
-        contactService.save(contact);
+    public String save(@ModelAttribute("contact") Contact contact, BindingResult result, Model model) {
+        if(result.hasErrors()) {
+            return "contact/create";
+        }
+        
+        if(contact != null) {
+            contactService.save(contact);
+        }       
         model.addAttribute("id",contact.getId());
         return "redirect:show";
     }
