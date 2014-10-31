@@ -35,6 +35,8 @@ public class Contact
     @NotBlank(message = "not a valid email format!")
     @Email(message = "not a valid email format!")
     private String email;
+    
+    @NotBlank
     private String homeAddress;
     private String officeAddress;
     private String memo;
