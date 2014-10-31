@@ -28,6 +28,7 @@ public class Contact
     private String mobile;
     
     @NotNull
+    @Pattern(regexp="\\d{4,6}", message="vpmn must be between 4 to 6!")
     private String vpmn;
     private String email;
     private String homeAddress;

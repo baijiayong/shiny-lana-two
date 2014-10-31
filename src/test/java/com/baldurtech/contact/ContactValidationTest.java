@@ -99,4 +99,10 @@ public class ContactValidationTest {
         contact.setVpmn(null);
         assertConstraintViolations("不能为null");
     }
+    
+    @Test
+    public void vpmn_cannot_be_blank() {
+        contact.setVpmn("  ");
+        assertConstraintViolations("vpmn must be between 4 to 6!");
+    }
 }
