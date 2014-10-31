@@ -10,17 +10,23 @@ import org.springframework.validation.BindingResult;
 
 import org.springframework.ui.Model;
 
+import java.security.Principal;
+
 import java.util.List;
 import java.util.ArrayList;
+
+import com.baldurtech.account.*;
 
 @Controller
 @RequestMapping("contact")
 public class ContactController {
     ContactService contactService;
+    AccountRepository accountRepository;
     
     @Autowired
-    public ContactController(ContactService contactService) {
+    public ContactController(ContactService contactService, AccountRepository accountRepository) {
         this.contactService = contactService;
+        this.accountRepository = accountRepository;
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -37,9 +43,18 @@ public class ContactController {
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.GET) 
-    public String create(Model model) {
-        model.addAttribute("contact", new Contact());
-        return "contact/create";
+    public String create(Model model, Principal principal) {
+        Account account = accountRepository.findByEmail(principal.getName());
+        
+        if("ROLE_USER".equals(account.getRole())) {
+            return "contact/forbidden";
+        } else if("ROLE_ADMIN".equals(account.getRole())) {            
+            model.addAttribute("contact", new Contact());
+            return "contact/create";
+        }else {
+            return null;
+        }
+        
     }  
     
     @RequestMapping(value = "/save", method = RequestMethod.POST) 
