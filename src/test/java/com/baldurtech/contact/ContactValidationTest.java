@@ -123,4 +123,12 @@ public class ContactValidationTest {
         contact.setVpmn("1232222");
         assertConstraintViolations("vpmn must be between 4 to 6!");
     }
+    
+    @Test
+    public void email_cannot_be_null() {
+        contact.setEmail(null);
+        assertConstraintViolations("not a valid email format!");
+    }
+    
+    
 }
