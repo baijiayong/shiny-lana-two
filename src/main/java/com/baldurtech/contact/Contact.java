@@ -33,7 +33,7 @@ public class Contact
     private String vpmn;
     
     @NotBlank(message = "not a valid email format!")
-    @Email(message = "not a valid email fomat!")
+    @Email(message = "not a valid email format!")
     private String email;
     private String homeAddress;
     private String officeAddress;
