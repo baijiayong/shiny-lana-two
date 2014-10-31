@@ -58,6 +58,9 @@
                         <input type="hidden" name="id" th:value="${contact.id}"/>
                         <td align="center" colspan="2"><input type="submit" name="action" value="Delete"/></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" align="center"><button><a th:href="@{list}" th:text="Return"></a></button></td>
+                    </tr>
                 </form>
             </table>
         </div>
