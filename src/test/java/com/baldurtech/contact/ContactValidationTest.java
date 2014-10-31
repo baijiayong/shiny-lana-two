@@ -135,5 +135,10 @@ public class ContactValidationTest {
         contact.setEmail("      ");
         assertConstraintViolations("not a valid email format!");
     }
-    
+     
+    @Test
+    public void email_can_be_a_valid_format() {
+        contact.setEmail("asdfsdfsdf");
+        assertConstraintViolations("not a valid email format!");
+    }
 }
