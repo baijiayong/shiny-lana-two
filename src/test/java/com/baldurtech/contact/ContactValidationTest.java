@@ -69,4 +69,10 @@ public class ContactValidationTest {
         contact.setMobile("   ");
         assertConstraintViolations("not a valid mobile format!");
     }
+    
+    @Test
+    public void mobile_cannot_be_too_short() {
+        contact.setMobile("122");
+        assertConstraintViolations("not a valid mobile format!");
+    }
 }
