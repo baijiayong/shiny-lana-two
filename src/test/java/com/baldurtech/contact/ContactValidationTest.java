@@ -111,4 +111,16 @@ public class ContactValidationTest {
         contact.setVpmn("123");
         assertConstraintViolations("vpmn must be between 4 to 6!");
     }
+    
+    @Test
+    public void vpmn_can_be_digits() {
+        contact.setVpmn("abcde");
+        assertConstraintViolations("vpmn must be between 4 to 6!");
+    }
+    
+    @Test
+    public void vpmn_cannot_be_too_long() {
+        contact.setVpmn("1232222");
+        assertConstraintViolations("vpmn must be between 4 to 6!");
+    }
 }
