@@ -17,25 +17,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import org.springframework.mock.web.MockHttpSession;
-
 import org.springframework.ui.Model;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 
 import com.baldurtech.config.WebSecurityConfigurationAware;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 
 import org.springframework.validation.BindingResult;
 
 public class ContactControllerTest extends WebSecurityConfigurationAware {
     private Long CONTACT_ID = 3L;
     private Contact contact;
-
-    private static String SEC_CONTEXT_ATTR = HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
     @Mock
     BindingResult result;
@@ -67,27 +58,6 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
         contact.setJob("HR");
         contact.setJobLevel(9L);
         contact.setMemo("Memo");
-    }
-    
-    protected MockHttpSession userSession() {
-        List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_USER");
-        Authentication userAuthentication = 
-            new UsernamePasswordAuthenticationToken("user","demo", authorities);
-            
-        SecurityContext securityContext = org.mockito.Mockito.mock(SecurityContext.class);
-        when(securityContext.getAuthentication()).thenReturn(userAuthentication);
-        
-        MockHttpSession userSession = new MockHttpSession();
-        userSession.setAttribute(
-                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, 
-                securityContext);
-                
-        return userSession;
-    }
-    
-    protected org.springframework.test.web.servlet.ResultActions userPerform(org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder request)
-        throws Exception {
-        return mockMvc.perform(request.session(userSession()));
     }
     
     @Test

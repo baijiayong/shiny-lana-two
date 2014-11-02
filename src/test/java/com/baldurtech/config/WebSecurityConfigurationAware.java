@@ -5,10 +5,24 @@ import org.springframework.security.web.FilterChainProxy;
 
 import javax.inject.Inject;
 
+import static org.mockito.Mockito.when;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.mock.web.MockHttpSession;
+
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 public abstract class WebSecurityConfigurationAware extends WebAppConfigurationAware {
-
+    private static String SEC_CONTEXT_ATTR = HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
+    
     @Inject
     private FilterChainProxy springSecurityFilterChain;
 
@@ -16,5 +30,26 @@ public abstract class WebSecurityConfigurationAware extends WebAppConfigurationA
     public void before() {
         this.mockMvc = webAppContextSetup(this.wac)
                 .addFilters(this.springSecurityFilterChain).build();
+    }
+    
+    protected MockHttpSession userSession() {
+        List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_USER");
+        Authentication userAuthentication = 
+            new UsernamePasswordAuthenticationToken("user","demo", authorities);
+            
+        SecurityContext securityContext = org.mockito.Mockito.mock(SecurityContext.class);
+        when(securityContext.getAuthentication()).thenReturn(userAuthentication);
+        
+        MockHttpSession userSession = new MockHttpSession();
+        userSession.setAttribute(
+                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, 
+                securityContext);
+                
+        return userSession;
+    }
+    
+    protected org.springframework.test.web.servlet.ResultActions userPerform(org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder request)
+        throws Exception {
+        return mockMvc.perform(request.session(userSession()));
     }
 }
