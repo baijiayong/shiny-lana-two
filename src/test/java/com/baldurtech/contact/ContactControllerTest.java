@@ -123,7 +123,7 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
                .andExpect(view().name("contact/forbidden"));
     }
     
-    @Test @Ignore
+    @Test
     public void 当URLcontact_save时应该重定向到list页面() throws Exception {
         userPerform(post("/contact/save") 
                         .param("name", String.valueOf(contact.getName()))
@@ -138,7 +138,7 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
                .andExpect(redirectedUrl("show?id=8"));
     }
     
-    @Test @Ignore
+    @Test
     public void 在ContactController中的save方法中调ContactService中的save方法() {
         contactController.save(contact, result, model);
         verify(contactService).save(contact);
