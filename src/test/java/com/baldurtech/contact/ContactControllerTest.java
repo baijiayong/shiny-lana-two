@@ -152,7 +152,7 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
                .andExpect(model().attributeExists("contact"));
     }
     
-    @Test @Ignore
+    @Test
     public void 在ContactController中的update方法中调用了ContactService中的show方法 () {
         contactController.update(String.valueOf(CONTACT_ID), model);
         verify(contactService).show(CONTACT_ID);
