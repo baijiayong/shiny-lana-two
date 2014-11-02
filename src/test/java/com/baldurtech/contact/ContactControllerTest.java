@@ -188,7 +188,7 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
                .andExpect(redirectedUrl("list"));
     }
     
-    @Test @Ignore
+    @Test
     public void 在contactController的delete中调用了contactService中的delete方法() {
         contactController.delete(String.valueOf(CONTACT_ID));
         verify(contactService).delete(CONTACT_ID);
