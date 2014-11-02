@@ -144,7 +144,7 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
         verify(contactService).save(contact);
     }
     
-    @Test
+    @Test @Ignore
     public void 当URL为contact_update时应该访问update页面() throws Exception {
         userPerform(get("/contact/update")
                         .param("id", String.valueOf(CONTACT_ID)))
@@ -181,9 +181,9 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
         verify(contactService).update(contact);
     }
     
-    @Test @Ignore
+    @Test 
     public void 但点击update页面的delete时应该重定向到list页面() throws Exception {
-        mockMvc.perform(post("/contact/delete")
+        userPerform(post("/contact/delete")
                         .param("id", String.valueOf(CONTACT_ID)))
                .andExpect(redirectedUrl("list"));
     }
