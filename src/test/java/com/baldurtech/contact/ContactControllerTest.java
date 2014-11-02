@@ -103,9 +103,9 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
         verify(contactService).list();
     }
     
-    @Test @Ignore
+    @Test
     public void 当URL为contact_show时应该访问show页面() throws Exception{
-        mockMvc.perform(get("/contact/show")
+        userPerform(get("/contact/show")
                         .param("id", String.valueOf(CONTACT_ID)))
                .andExpect(view().name("contact/show"))
                .andExpect(model().attributeExists("contact"));
