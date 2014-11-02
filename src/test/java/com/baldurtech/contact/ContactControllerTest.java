@@ -97,7 +97,7 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
                .andExpect(view().name("contact/list"));
     }
     
-    @Test @Ignore
+    @Test 
     public void 在ContactController中的list方法中调用ContactService中的list方法() {
         contactController.list(model);
         verify(contactService).list();
