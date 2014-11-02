@@ -144,10 +144,9 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
         verify(contactService).save(contact);
     }
     
-    @Ignore
     @Test
     public void 当URL为contact_update时应该访问update页面() throws Exception {
-        mockMvc.perform(get("/contact/update")
+        userPerform(get("/contact/update")
                         .param("id", String.valueOf(CONTACT_ID)))
                .andExpect(view().name("contact/update"))
                .andExpect(model().attributeExists("contact"));
