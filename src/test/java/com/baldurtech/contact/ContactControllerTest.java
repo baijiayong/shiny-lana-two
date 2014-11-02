@@ -158,9 +158,9 @@ public class ContactControllerTest extends WebSecurityConfigurationAware {
         verify(contactService).show(CONTACT_ID);
     }
     
-    @Test @Ignore
+    @Test
     public void 当点击update页面的update时应该重定向到show页面() throws Exception {
-        mockMvc.perform(post("/contact/update")
+        userPerform(post("/contact/update")
                         .param("id", String.valueOf(CONTACT_ID))
                         .param("name", String.valueOf(contact.getName()))
                         .param("mobile", String.valueOf(contact.getMobile()))
